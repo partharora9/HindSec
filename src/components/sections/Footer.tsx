@@ -13,6 +13,8 @@ import FooterBackground from "@/components/footer/FooterBackground";
 import MagneticButton from "@/components/footer/MagneticButton";
 import FooterLinks from "@/components/footer/FooterLinks";
 
+import { footerContent, BRAND_NAME } from "@/content/siteContent";
+
 export default function Footer() {
   const footerRef = useRef<HTMLElement>(null);
   const isInView = useInView(footerRef, { once: true, margin: "-100px" });
@@ -34,11 +36,7 @@ export default function Footer() {
   // Hover state for interactive underline links
   const [hoveredBottomLink, setHoveredBottomLink] = useState<string | null>(null);
 
-  const bottomLinks = [
-    { title: "Licenses", href: "/licenses" },
-    { title: "Style guide", href: "/style-guide" },
-    { title: "Changelog", href: "/changelog" },
-  ];
+  const bottomLinks = footerContent.bottomLinks;
 
   return (
     <footer
@@ -129,11 +127,11 @@ export default function Footer() {
                 }}
                 className="text-[30px] sm:text-[34px] font-normal tracking-[-0.5px] text-white leading-none"
               >
-                Securio
+                {BRAND_NAME}
               </motion.span>
             </Link>
 
-            {/* Tagline at y=413: "Take security from reactive to proactive" (18px, weight 400) */}
+            {/* Tagline: "Find it before attackers do" (18px, weight 400) */}
             <motion.p
               initial={{ opacity: 0, y: prefersReduced ? 0 : 14 }}
               animate={
@@ -148,13 +146,13 @@ export default function Footer() {
               }}
               className="mt-[52px] text-[17px] sm:text-[18px] font-normal text-white tracking-tight"
             >
-              Take security from reactive to proactive
+              {footerContent.tagline}
             </motion.p>
           </div>
 
           {/* ================= RIGHT COLUMN (Cols 6-12, x=985) ================= */}
           <div className="lg:col-span-7 flex flex-col items-start lg:pl-[67px] order-1 lg:order-2">
-            {/* Heading at y=85 to 195: 2 lines "Request a free / security audit", 48px, weight 400 */}
+            {/* Heading at y=85 to 195: 2 lines "Request a free / VAPT scoping call", 48px, weight 400 */}
             <motion.div
               style={{ y: prefersReduced ? 0 : headingParallaxY }}
               className="flex flex-col items-start"
@@ -179,7 +177,7 @@ export default function Footer() {
                     }}
                     className="flex flex-wrap"
                   >
-                    {["Request", "a", "free"].map((word, wIdx) => (
+                    {footerContent.headingLine1.split(" ").map((word, wIdx) => (
                       <motion.span
                         key={wIdx}
                         whileHover={prefersReduced ? {} : { y: -3 }}
@@ -192,7 +190,7 @@ export default function Footer() {
                   </motion.div>
                 </div>
 
-                {/* Line 2: security audit */}
+                {/* Line 2: VAPT scoping call */}
                 <div className="overflow-hidden py-0.5">
                   <motion.div
                     initial={{
@@ -212,7 +210,7 @@ export default function Footer() {
                     }}
                     className="flex flex-wrap"
                   >
-                    {["security", "audit"].map((word, wIdx) => (
+                    {footerContent.headingLine2.split(" ").map((word, wIdx) => (
                       <motion.span
                         key={wIdx}
                         whileHover={prefersReduced ? {} : { y: -3 }}
@@ -227,7 +225,7 @@ export default function Footer() {
               </h2>
             </motion.div>
 
-            {/* White pill button at y=231 to 286: 156x55px, rounded-full, Book a Demo */}
+            {/* White pill button: Get a Free Quote */}
             <div className="mt-[36px]">
               <MagneticButton isInView={isInView} delay={0.28} />
             </div>
@@ -243,7 +241,7 @@ export default function Footer() {
         <div className="w-full flex flex-col sm:flex-row items-start sm:items-end justify-between pt-12 lg:pt-0 gap-y-4">
           {/* Bottom Left: Links & Credits */}
           <div className="flex flex-col items-start gap-y-[26px]">
-            {/* Links row at y=693: Licenses, Style guide, Changelog (15px, 16px gap) */}
+            {/* Links row: Privacy Policy, Terms of Service */}
             <motion.div
               initial={{ opacity: 0, y: prefersReduced ? 0 : 10 }}
               animate={
@@ -280,7 +278,7 @@ export default function Footer() {
               ))}
             </motion.div>
 
-            {/* Credit line at y=762: Designed by Human Made (14px) */}
+            {/* Credit line: © <current year> Securio. All rights reserved. */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -290,29 +288,11 @@ export default function Footer() {
               }}
               className="text-[14px] text-white/70"
             >
-              Designed by{" "}
-              <Link
-                href="https://humanmade.com"
-                target="_blank"
-                rel="noopener noreferrer"
-                onMouseEnter={() => setHoveredBottomLink("Human Made")}
-                onMouseLeave={() => setHoveredBottomLink(null)}
-                className="relative inline-flex flex-col text-white font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
-              >
-                <span>Human Made</span>
-                <motion.div
-                  initial={{ scaleX: 0 }}
-                  animate={{
-                    scaleX: hoveredBottomLink === "Human Made" ? 1 : 0,
-                  }}
-                  transition={{ duration: 0.3, ease: "easeInOut" }}
-                  className="h-[1px] bg-white origin-left w-full mt-[1px]"
-                />
-              </Link>
+              {footerContent.copyrightText}
             </motion.div>
           </div>
 
-          {/* Bottom Right: Powered by Webflow (aligned to x=1593, y=762) */}
+          {/* Bottom Right: Authorized testing only */}
           <motion.div
             initial={{ opacity: 0 }}
             animate={isInView ? { opacity: 1 } : { opacity: 0 }}
@@ -322,25 +302,7 @@ export default function Footer() {
             }}
             className="text-[14px] text-white/70 self-start sm:self-end"
           >
-            Powered by{" "}
-            <Link
-              href="https://webflow.com"
-              target="_blank"
-              rel="noopener noreferrer"
-              onMouseEnter={() => setHoveredBottomLink("Webflow")}
-              onMouseLeave={() => setHoveredBottomLink(null)}
-              className="relative inline-flex flex-col text-white font-medium focus:outline-none focus-visible:ring-2 focus-visible:ring-white rounded-sm"
-            >
-              <span>Webflow</span>
-              <motion.div
-                initial={{ scaleX: 0 }}
-                animate={{
-                  scaleX: hoveredBottomLink === "Webflow" ? 1 : 0,
-                }}
-                transition={{ duration: 0.3, ease: "easeInOut" }}
-                className="h-[1px] bg-white origin-left w-full mt-[1px]"
-              />
-            </Link>
+            {footerContent.authorizedNotice}
           </motion.div>
         </div>
       </div>

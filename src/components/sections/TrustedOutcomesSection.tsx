@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 import FeatureIcon from "@/components/FeatureIcon";
+import { solutionSuiteContent } from "@/content/siteContent";
 
 interface FeatureItem {
   id: string;
@@ -12,50 +13,7 @@ interface FeatureItem {
   description: string;
 }
 
-const features: FeatureItem[] = [
-  {
-    id: "threat-intelligence",
-    type: "threat",
-    title: "Threat Intelligence",
-    description:
-      "We monitor threat signals, analyze patterns, and help your team understand which risks need attention before they become incidents.",
-  },
-  {
-    id: "identity-protection",
-    type: "identity",
-    title: "Identity Protection",
-    description:
-      "We help protect user access, reduce account misuse, and make sure the right people can reach the right systems safely.",
-  },
-  {
-    id: "network-defense",
-    type: "network",
-    title: "Network Defense",
-    description:
-      "We strengthen your network controls, reduce exposure, and help block suspicious activity before it reaches critical systems.",
-  },
-  {
-    id: "incident-response",
-    type: "incident",
-    title: "Incident Response",
-    description:
-      "We help your team contain threats, investigate activity, and restore control with a clear response process when incidents happen.",
-  },
-  {
-    id: "data-protection",
-    type: "data",
-    title: "Data Protection",
-    description:
-      "We protect sensitive business data across systems, devices, and workflows with controls built around real security risks.",
-  },
-  {
-    id: "security-analytics",
-    type: "analytics",
-    title: "Security Analytics",
-    description:
-      "We turn security data into clear insights, helping your team detect issues faster and make better security decisions.",
-  },
-];
+const features: FeatureItem[] = solutionSuiteContent.items;
 
 function FeatureGridCard({
   item,
@@ -145,7 +103,7 @@ export default function TrustedOutcomesSection() {
           transition={{ duration: prefersReduced ? 0 : 0.6, ease: "easeOut" }}
           className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
         >
-          SECURIO SOLUTION SUITE
+          {solutionSuiteContent.label}
         </motion.div>
 
         {/* Section heading: 48px, weight 400, line-height 1.22, letter-spacing -1px, 40px below label */}
@@ -159,7 +117,7 @@ export default function TrustedOutcomesSection() {
           }}
           className="mt-[40px] text-[34px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]"
         >
-          Trusted outcomes.
+          {solutionSuiteContent.heading}
         </motion.h2>
 
         {/* 70px below heading: 3-column x 2-row grid (405px wide, 32px gap, row pitch ~272px) */}

@@ -3,6 +3,7 @@
 import React, { useState } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
+import { navContent } from "@/content/siteContent";
 
 export interface MegaMenuItem {
   title: string;
@@ -13,9 +14,9 @@ export interface MegaMenuItem {
 
 export const servicesMenuItems: MegaMenuItem[] = [
   {
-    title: "Proactive Security",
-    description: "Stop threats before impact",
-    href: "/services/proactive-security",
+    title: navContent.services[0].title,
+    description: navContent.services[0].description,
+    href: navContent.services[0].href,
     icon: (
       <svg
         className="w-[18px] h-[18px]"
@@ -38,9 +39,9 @@ export const servicesMenuItems: MegaMenuItem[] = [
     ),
   },
   {
-    title: "Penetration Testing",
-    description: "Test defenses against real threats",
-    href: "/services/penetration-testing",
+    title: navContent.services[1].title,
+    description: navContent.services[1].description,
+    href: navContent.services[1].href,
     icon: (
       <svg
         className="w-[18px] h-[18px]"
@@ -58,9 +59,9 @@ export const servicesMenuItems: MegaMenuItem[] = [
     ),
   },
   {
-    title: "Endpoint Security",
-    description: "Keep systems and users protected",
-    href: "/services/endpoint-security",
+    title: navContent.services[2].title,
+    description: navContent.services[2].description,
+    href: navContent.services[2].href,
     icon: (
       <svg
         className="w-[18px] h-[18px]"
@@ -71,9 +72,10 @@ export const servicesMenuItems: MegaMenuItem[] = [
         strokeLinecap="round"
         strokeLinejoin="round"
       >
-        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
-        <circle cx="12" cy="11" r="1.5" />
-        <path d="M12 12.5v2.5" />
+        <rect x="3" y="4" width="18" height="16" rx="2" />
+        <line x1="3" y1="9" x2="21" y2="9" />
+        <circle cx="6.5" cy="6.5" r="0.75" fill="white" />
+        <circle cx="9.5" cy="6.5" r="0.75" fill="white" />
       </svg>
     ),
   },
@@ -81,9 +83,9 @@ export const servicesMenuItems: MegaMenuItem[] = [
 
 export const whySecurioMenuItems: MegaMenuItem[] = [
   {
-    title: "About",
-    description: "Our mission, values, and experience",
-    href: "/about",
+    title: navContent.whySecurio[0].title,
+    description: navContent.whySecurio[0].description,
+    href: navContent.whySecurio[0].href,
     icon: (
       <svg
         className="w-[18px] h-[18px]"
@@ -102,9 +104,28 @@ export const whySecurioMenuItems: MegaMenuItem[] = [
     ),
   },
   {
-    title: "Careers",
-    description: "Join a team focused on real impact",
-    href: "/careers",
+    title: navContent.whySecurio[1].title,
+    description: navContent.whySecurio[1].description,
+    href: navContent.whySecurio[1].href,
+    icon: (
+      <svg
+        className="w-[18px] h-[18px]"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="white"
+        strokeWidth="1.5"
+        strokeLinecap="round"
+        strokeLinejoin="round"
+      >
+        <circle cx="12" cy="8" r="6" />
+        <path d="M15.477 12.89 17 22l-5-3-5 3 1.523-9.11" />
+      </svg>
+    ),
+  },
+  {
+    title: navContent.whySecurio[2].title,
+    description: navContent.whySecurio[2].description,
+    href: navContent.whySecurio[2].href,
     icon: (
       <svg
         className="w-[18px] h-[18px]"
@@ -139,9 +160,8 @@ export default function MegaDropdown({
   onMouseLeave,
   onClose,
 }: MegaDropdownProps) {
-  const [imgError, setImgError] = useState(false);
   const items = type === "services" ? servicesMenuItems : whySecurioMenuItems;
-  const label = type === "services" ? "SERVICES" : "WHY SECURIO";
+  const label = type === "services" ? navContent.servicesLabel : navContent.whyLabel;
 
   return (
     <motion.div
@@ -213,20 +233,20 @@ export default function MegaDropdown({
 
       {/* RIGHT COLUMN: Image Card (w-[257px], sharp corners, flush with 8px panel padding) */}
       <motion.a
-        href="#contact"
+        href={navContent.dropdownCard.href}
         onClick={onClose}
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
         transition={{ duration: 0.25, delay: 0.08 }}
         className="w-[257px] h-full relative rounded-none overflow-hidden block group cursor-pointer flex-shrink-0 focus:outline-none focus-visible:ring-2 focus-visible:ring-black"
         role="menuitem"
-        aria-label="Talk to a Security Expert"
+        aria-label={`${navContent.dropdownCard.titleLine1} ${navContent.dropdownCard.titleLine2}`}
       >
         {/* Background Image / Gradient Fallback */}
         <div className="w-full h-full bg-gradient-to-br from-[#1c2c4a] via-[#121c2e] to-[#0a101b] absolute inset-0">
           <Image
-            src="/images/security-expert.jpg"
-            alt="Security Experts collaborating"
+            src={navContent.dropdownCard.imageSrc}
+            alt={navContent.dropdownCard.imageAlt}
             fill
             unoptimized
             sizes="257px"
@@ -257,11 +277,11 @@ export default function MegaDropdown({
         {/* Text at bottom-left: 16px padding */}
         <div className="absolute bottom-0 left-0 right-0 p-[16px] z-10 flex flex-col justify-end">
           <h3 className="text-[24px] font-normal text-white leading-[1.2] tracking-[-0.01em]">
-            Talk to a<br />
-            Security Expert
+            {navContent.dropdownCard.titleLine1}<br />
+            {navContent.dropdownCard.titleLine2}
           </h3>
           <span className="text-[13px] font-medium text-white/95 mt-[5px]">
-            Plan your next steps
+            {navContent.dropdownCard.subtitle}
           </span>
         </div>
       </motion.a>

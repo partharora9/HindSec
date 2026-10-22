@@ -3,6 +3,7 @@
 import React, { useState, useRef } from "react";
 import { motion, AnimatePresence, useInView } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
+import { faqContent } from "@/content/siteContent";
 
 interface FaqItem {
   id: string;
@@ -10,50 +11,7 @@ interface FaqItem {
   answer: string;
 }
 
-const faqs: FaqItem[] = [
-  {
-    id: "faq-1",
-    question: "What types of cyber threats do you protect against?",
-    answer:
-      "We defend against advanced persistent threats (APTs), zero-day exploits, ransomware campaigns, supply chain compromises, and credential abuse across your hybrid cloud and on-premises environments.",
-  },
-  {
-    id: "faq-2",
-    question: "How quickly can you detect and respond to an attack?",
-    answer:
-      "Our 24/7 Security Operations Center achieves a median time-to-detect (MTTD) under 5 minutes and executes containment playbooks within 15 minutes of verified high-severity signals.",
-  },
-  {
-    id: "faq-3",
-    question: "Do you provide 24/7 monitoring and support?",
-    answer:
-      "Yes, Securio operates multi-region security operations centers delivering uninterrupted 24/7/365 telemetry monitoring, threat hunting, and direct incident commander access.",
-  },
-  {
-    id: "faq-4",
-    question: "Can your solutions scale as our business grows?",
-    answer:
-      "Our cloud-native platform scales automatically to handle exponential telemetry volume, expanding team sizes, and multi-cloud architectures without latency or re-architecture.",
-  },
-  {
-    id: "faq-5",
-    question: "How do you ensure compliance with industry standards?",
-    answer:
-      "We continuously map defenses and telemetry to SOC 2 Type II, ISO 27001, HIPAA, PCI-DSS, and NIST CSF, providing automated audit evidence and real-time posture reporting.",
-  },
-  {
-    id: "faq-6",
-    question: "How do you onboard and integrate with our existing infrastructure?",
-    answer:
-      "Onboarding takes 2 to 5 business days via turnkey API connectors and lightweight agents that integrate natively with existing SIEMs, identity providers, cloud consoles, and endpoint tools.",
-  },
-  {
-    id: "faq-7",
-    question: "What level of visibility and reporting will we have?",
-    answer:
-      "You gain real-time visibility through unified executive dashboards, continuous vulnerability metrics, and bi-weekly strategic threat briefings led by senior security architects.",
-  },
-];
+const faqs: FaqItem[] = faqContent.items;
 
 function FaqRow({
   item,
@@ -239,15 +197,15 @@ function AskCard() {
       <div className="absolute bottom-[24px] left-[24px] right-[24px] flex flex-col items-start">
         {/* Title: 24px, weight 400, #0a0a0a */}
         <h4 className="text-[20px] sm:text-[22px] lg:text-[24px] font-normal text-[#0a0a0a] leading-[1.25]">
-          Can’t find an answer to your question?
+          {faqContent.askCard.title}
         </h4>
 
-        {/* 12px below: Click to book a demo with underline animation on hover */}
+        {/* 12px below: Talk to our team with underline animation on hover */}
         <div className="mt-[12px] relative inline-block">
           <span className="text-[17px] sm:text-[18px] text-[#4a4f5a] font-normal leading-normal">
-            Click to book a demo
+            {faqContent.askCard.sub}
           </span>
-          {/* Thin black underline animating under "Click to book a demo" */}
+          {/* Thin black underline animating under "Talk to our team" */}
           <motion.div
             initial={{ scaleX: 0 }}
             animate={{ scaleX: isHovered ? 1 : 0 }}
@@ -292,7 +250,7 @@ export default function FaqSection() {
                 transition={{ duration: prefersReduced ? 0 : 0.6, ease: "easeOut" }}
                 className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
               >
-                QUESTIONS & ANSWERS
+                {faqContent.label}
               </motion.div>
 
               {/* Section heading: 40px below label, on two lines "Frequently / Asked Questions", 48px */}
@@ -306,9 +264,9 @@ export default function FaqSection() {
                 }}
                 className="mt-[40px] text-[34px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]"
               >
-                Frequently
+                {faqContent.headingLine1}
                 <br />
-                Asked Questions
+                {faqContent.headingLine2}
               </motion.h2>
             </div>
 

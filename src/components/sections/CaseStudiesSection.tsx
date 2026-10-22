@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import Image from "next/image";
 import { motion, useInView, useScroll, useTransform } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
+import { caseStudiesContent } from "@/content/siteContent";
 
 interface CaseStudyItem {
   id: string;
@@ -12,34 +13,10 @@ interface CaseStudyItem {
   line2: string;
   imageSrc: string;
   href: string;
+  alt?: string;
 }
 
-const caseStudies: CaseStudyItem[] = [
-  {
-    id: "fintech-security",
-    category: "CASE STUDY",
-    line1: "Modernizing DevOps",
-    line2: "FinTech Security",
-    imageSrc: "/images/case-1.jpg",
-    href: "/case-studies/fintech-devops-security",
-  },
-  {
-    id: "healthcare-security",
-    category: "CASE STUDY",
-    line1: "Modernizing Healthcare",
-    line2: "Security with SecOps",
-    imageSrc: "/images/case-2.jpg",
-    href: "/case-studies/healthcare-secops",
-  },
-  {
-    id: "enterprise-data",
-    category: "CASE STUDY",
-    line1: "Securing Enterprise Data",
-    line2: "at Scale",
-    imageSrc: "/images/case-3.jpg",
-    href: "/case-studies/enterprise-data-scale",
-  },
-];
+const caseStudies: CaseStudyItem[] = caseStudiesContent.items;
 
 function CaseStudyCard({
   item,
@@ -87,7 +64,7 @@ function CaseStudyCard({
           <div className="w-full h-full transition-transform duration-700 ease-out group-hover:scale-[1.06] relative">
             <Image
               src={item.imageSrc}
-              alt={`${item.line1} ${item.line2}`}
+              alt={`${item.line1} ${item.line2} - VAPT Engagement`}
               fill
               unoptimized
               priority={index === 0}
@@ -186,7 +163,7 @@ export default function CaseStudiesSection() {
           transition={{ duration: prefersReduced ? 0 : 0.6, ease: "easeOut" }}
           className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
         >
-          CASE STUDIES
+          {caseStudiesContent.label}
         </motion.div>
 
         {/* Section heading: 48px, weight 400, line-height 1.22, letter-spacing -1px, 40px below label */}
@@ -200,7 +177,7 @@ export default function CaseStudiesSection() {
           }}
           className="mt-[40px] text-[34px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]"
         >
-          Client success stories
+          {caseStudiesContent.heading}
         </motion.h2>
 
         {/* 70px below heading: 3 image cards in a row (405px x 480px, 32px gap) */}

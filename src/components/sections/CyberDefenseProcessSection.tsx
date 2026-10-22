@@ -2,40 +2,11 @@
 
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-
-interface ProcessItem {
-  id: number;
-  number: string;
-  title: string;
-  description: string;
-}
-
-const processSteps: ProcessItem[] = [
-  {
-    id: 1,
-    number: "1",
-    title: "Discovery",
-    description:
-      "We assess your systems, workflows, risks, and business goals to find weak points, define priorities, and create a clear security baseline before any work begins.",
-  },
-  {
-    id: 2,
-    number: "2",
-    title: "Design & Architecture",
-    description:
-      "We design a layered defense architecture with the right controls, tools, and policies for your environment.",
-  },
-  {
-    id: 3,
-    number: "3",
-    title: "Implementation",
-    description:
-      "We deploy and tune the controls, monitor results, and hand over clear playbooks so your team stays in control.",
-  },
-];
+import { vaptProcessContent, BRAND_NAME } from "@/content/siteContent";
 
 export default function CyberDefenseProcessSection() {
   const [activeStep, setActiveStep] = useState<number>(1);
+  const processSteps = vaptProcessContent.steps;
 
   return (
     <section className="w-full bg-[#f0f1f3] mt-[140px] pb-[160px] select-none text-[#0a0a0a]">
@@ -52,9 +23,9 @@ export default function CyberDefenseProcessSection() {
               transition={{ duration: 0.7 }}
             >
               <h2 className="text-[36px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]">
-                Cyber defense process
+                {vaptProcessContent.headingLine1}
                 <br />
-                designed for real threats
+                {vaptProcessContent.headingLine2}
               </h2>
             </motion.div>
 

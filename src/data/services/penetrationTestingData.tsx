@@ -2,6 +2,7 @@ import React from "react";
 import { motion } from "framer-motion";
 import { ServicePageData } from "@/types/service";
 import DigitalBarsCanvas from "@/components/penetration-testing/DigitalBarsCanvas";
+import { testimonialContent } from "@/content/siteContent";
 
 export const penetrationTestingData: ServicePageData = {
   hero: {
@@ -234,7 +235,7 @@ export const penetrationTestingData: ServicePageData = {
         number: 2,
         title: "Test real attack paths",
         description:
-          "We use controlled testing methods to validate vulnerabilities and show how an attacker could move through your environment.",
+          "We use controlled testing methods to validate vulnerabilities and show how an attacker could move through your environment, always within the agreed scope.",
       },
       {
         number: 3,
@@ -622,4 +623,9 @@ export const penetrationTestingData: ServicePageData = {
       ),
     },
   ],
+  testimonialAuthor: {
+    name: testimonialContent.authorName,
+    role: testimonialContent.authorRole,
+    className: "text-[22px] font-normal text-[#0a0a0a]",
+  },
 };

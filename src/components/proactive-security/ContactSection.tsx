@@ -31,9 +31,9 @@ export default function ContactSection() {
       if (role) {
         const roleTitles: Record<string, string> = {
           "senior-penetration-tester": "Senior Penetration Tester",
+          "application-security-engineer": "Application Security Engineer",
+          "security-analyst-va": "Security Analyst (VA)",
           "cloud-security-engineer": "Cloud Security Engineer",
-          "security-operations-analyst": "Security Operations Analyst",
-          "devsecops-engineer": "DevSecOps Engineer",
         };
         const title =
           roleTitles[role] ||
@@ -150,7 +150,7 @@ export default function ContactSection() {
             >
               <Image
                 src="/images/contact-team.jpg"
-                alt="Securio consulting team discussing security operations"
+                alt="Securio security consultants planning VAPT scope"
                 fill
                 unoptimized
                 sizes="(max-width: 1024px) 100vw, 608px"
@@ -199,7 +199,7 @@ export default function ContactSection() {
             >
               Partner with us for
               <br />
-              cybersecurity excellence
+              VAPT excellence
             </motion.h2>
 
             {/* Form Container (70px below heading) */}

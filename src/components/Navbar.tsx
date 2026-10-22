@@ -8,6 +8,7 @@ import MegaDropdown, {
   servicesMenuItems,
   whySecurioMenuItems,
 } from "./MegaDropdown";
+import { BRAND_NAME, navContent } from "@/content/siteContent";
 
 export interface NavbarProps {
   theme?: "dark" | "light";
@@ -191,7 +192,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
               isLight ? "text-[#0a0a0a]" : "text-white"
             }`}
           >
-            Securio
+            {BRAND_NAME}
           </span>
         </a>
 
@@ -267,7 +268,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                   : "text-white/90 hover:text-white"
               }`}
             >
-              <span>Why Securio</span>
+              <span>Why {BRAND_NAME}</span>
               <motion.div
                 animate={{ rotate: activeDropdown === "why" ? 180 : 0 }}
                 transition={{ duration: 0.22, ease: "easeInOut" }}
@@ -291,7 +292,24 @@ export default function Navbar({ theme }: NavbarProps = {}) {
             </button>
           </div>
 
-          {/* 3. Contact */}
+          {/* 3. Case Studies */}
+          <a
+            href="/#case-studies"
+            className={`group relative py-2 text-[15px] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md px-1 ${
+              isLight
+                ? "text-[#0a0a0a] hover:text-[#0a0a0a]/75"
+                : "text-white/90 hover:text-white"
+            }`}
+          >
+            <span>Case Studies</span>
+            <span
+              className={`absolute bottom-0 left-0 h-[2px] transition-all duration-200 ease-out ${
+                isLight ? "bg-[#0a0a0a]" : "bg-white"
+              } w-0 group-hover:w-full`}
+            />
+          </a>
+
+          {/* 4. Contact */}
           <a
             href="/contact"
             className={`group relative py-2 text-[15px] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md px-1 ${
@@ -352,7 +370,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 } transform -skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out`}
               />
             </div>
-            <span className="relative z-10">Book a Demo</span>
+            <span className="relative z-10">{navContent.ctaButton}</span>
           </motion.a>
 
           {/* Mobile hamburger button (< 900px) */}
@@ -435,7 +453,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                   }
                   className="flex items-center justify-between w-full py-2 text-white text-[17px] font-medium"
                 >
-                  <span>Why Securio</span>
+                  <span>Why {BRAND_NAME}</span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${
                       mobileActiveAccordion === "why" ? "rotate-180" : ""
@@ -469,6 +487,14 @@ export default function Navbar({ theme }: NavbarProps = {}) {
               </div>
 
               <a
+                href="/#case-studies"
+                className="block py-2 text-[17px] font-medium text-white"
+                onClick={() => setMobileMenuOpen(false)}
+              >
+                Case Studies
+              </a>
+
+              <a
                 href="/contact"
                 className={`block py-2 text-[17px] font-medium ${
                   pathname === "/contact" ? "text-white/60" : "text-white"
@@ -485,7 +511,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 className="w-full h-[46px] rounded-full bg-white text-black font-medium flex items-center justify-center text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
-                Book a Demo
+                {navContent.ctaButton}
               </a>
             </div>
           </motion.div>

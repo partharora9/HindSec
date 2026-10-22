@@ -3,6 +3,7 @@
 import React from "react";
 import { motion, type Variants } from "framer-motion";
 import TrustBadge from "./TrustBadge";
+import { heroContent } from "@/content/siteContent";
 
 export default function Hero() {
   const lineVariants: Variants = {
@@ -37,7 +38,7 @@ export default function Hero() {
               animate="visible"
               className="inline-block"
             >
-              Cybersecurity services
+              {heroContent.h1Line1}
             </motion.div>
           </div>
           <div className="overflow-hidden py-1">
@@ -48,7 +49,7 @@ export default function Hero() {
               animate="visible"
               className="inline-block"
             >
-              for a new era of risk
+              {heroContent.h1Line2}
             </motion.div>
           </div>
         </h1>
@@ -64,7 +65,7 @@ export default function Hero() {
           }}
           className="text-white/95 text-[19px] sm:text-[24px] font-normal tracking-[-0.015em] mt-[24px]"
         >
-          Protect your business from cyber threats.
+          {heroContent.subtext}
         </motion.p>
 
         {/* 4. CTA Button (top at y=516 to 570; mt=42px from subtext) */}
@@ -79,7 +80,7 @@ export default function Hero() {
           className="mt-[42px]"
         >
           <motion.a
-            href="/contact"
+            href={heroContent.ctaHref}
             whileHover={{ y: -2 }}
             whileTap={{ scale: 0.97 }}
             className="group relative overflow-hidden inline-flex items-center justify-center h-[54px] px-[32px] rounded-full bg-black text-white text-[16px] sm:text-[17px] font-medium tracking-tight shadow-[0_10px_25px_rgba(0,0,0,0.4)] hover:shadow-[0_14px_35px_rgba(0,0,0,0.6)] hover:bg-[#0c0c0c] transition-all duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-black"
@@ -89,7 +90,7 @@ export default function Hero() {
               <div className="w-1/2 h-full bg-gradient-to-r from-transparent via-white/15 to-transparent transform -skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out" />
             </div>
 
-            <span className="relative z-10">Book a Demo</span>
+            <span className="relative z-10">{heroContent.ctaButton}</span>
           </motion.a>
         </motion.div>
       </div>

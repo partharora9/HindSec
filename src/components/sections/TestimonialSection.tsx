@@ -8,9 +8,7 @@ import {
   type MotionValue,
 } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
-
-const quoteText =
-  '"They brought clarity to complex problems, breaking down barriers and delivering innovative solutions. I was truly impressed by how quickly their strategies turned into real, tangible outcomes."';
+import { testimonialContent } from "@/content/siteContent";
 
 function CharSpan({
   char,
@@ -44,9 +42,9 @@ interface TestimonialSectionProps {
 }
 
 export default function TestimonialSection({
-  quote = quoteText,
-  authorName = "Elena Rostova",
-  authorRole = "CEO, Tech Innovations",
+  quote = testimonialContent.quote,
+  authorName = testimonialContent.authorName,
+  authorRole = testimonialContent.authorRole,
   authorNameClass = "text-[18px] font-medium text-[#0a0a0a]",
 }: TestimonialSectionProps = {}) {
   const containerRef = useRef<HTMLDivElement | null>(null);

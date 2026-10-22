@@ -4,12 +4,13 @@ import React, { useState } from "react";
 import Image from "next/image";
 import { motion, type Variants } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
+import { heroContent } from "@/content/siteContent";
 
 const avatars = [
-  { src: "/avatars/avatar-1.jpg", alt: "Client Director" },
-  { src: "/avatars/avatar-2.jpg", alt: "VP of Engineering" },
-  { src: "/avatars/avatar-3.jpg", alt: "Chief Information Security Officer" },
-  { src: "/avatars/avatar-4.jpg", alt: "Head of Infrastructure" },
+  { src: "/avatars/avatar-1.jpg", alt: "Lead Security Auditor" },
+  { src: "/avatars/avatar-2.jpg", alt: "Offensive Security Specialist" },
+  { src: "/avatars/avatar-3.jpg", alt: "Penetration Testing Engineer" },
+  { src: "/avatars/avatar-4.jpg", alt: "Application Security Analyst" },
 ];
 
 export default function TrustBadge() {
@@ -82,7 +83,7 @@ export default function TrustBadge() {
 
       {/* Badge Text */}
       <span className="ml-[13px] text-[17px] font-medium text-white/95 tracking-[-0.015em] whitespace-nowrap">
-        Trusted by 300+ companies
+        {heroContent.trustBadge}
       </span>
     </motion.div>
   );

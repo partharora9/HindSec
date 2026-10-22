@@ -1,17 +1,17 @@
 import type { Metadata } from "next";
 import CareersPageClient from "@/components/careers/CareersPageClient";
-import { careersData } from "@/data/careersData";
+import { BRAND_NAME, siteMetadata, careersContent } from "@/content/siteContent";
 
 export const metadata: Metadata = {
-  title: "Careers | Securio",
+  title: `Careers | ${BRAND_NAME}`,
   description:
-    "Join a team focused on practical security work, clear thinking, and protecting businesses from real cyber risk. Explore our open remote positions.",
+    `Join a team focused on real offensive security impact, vulnerability research, and practical defense. Explore open VAPT roles at ${BRAND_NAME}.`,
 };
 
 export default function CareersPage() {
   const jsonLd = {
     "@context": "https://schema.org",
-    "@graph": careersData.map((role) => ({
+    "@graph": careersContent.openRoles.map((role) => ({
       "@type": "JobPosting",
       title: role.title,
       description: role.description,
@@ -20,8 +20,8 @@ export default function CareersPage() {
       employmentType: "FULL_TIME",
       hiringOrganization: {
         "@type": "Organization",
-        "name": "Securio",
-        "sameAs": "https://securio.com",
+        "name": BRAND_NAME,
+        "sameAs": siteMetadata.siteUrl,
       },
       jobLocationType: "TELECOMMUTE",
       applicantLocationRequirements: {
@@ -29,7 +29,7 @@ export default function CareersPage() {
         "name": "Worldwide",
       },
       directApply: true,
-      url: `https://securio.com/careers#${role.slug}`,
+      url: `${siteMetadata.siteUrl}/careers#${role.slug}`,
     })),
   };
 

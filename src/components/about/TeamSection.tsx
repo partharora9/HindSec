@@ -152,7 +152,7 @@ export default function TeamSection({
                   <div className="relative w-full aspect-square overflow-hidden rounded-none mb-[20px] bg-[#dbe1e8]">
                     <Image
                       src={member.image}
-                      alt={member.name}
+                      alt={member.alt || `${member.name} - ${member.role}`}
                       fill
                       unoptimized
                       priority={idx < 2}

@@ -4,25 +4,15 @@ import React, { useState } from "react";
 import Link from "next/link";
 import { motion } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
+import { footerContent } from "@/content/siteContent";
 
 interface LinkItem {
   title: string;
   href: string;
 }
 
-const column1Links: LinkItem[] = [
-  { title: "Proactive Security", href: "/services/proactive-security" },
-  { title: "Penetration Testing", href: "/services/penetration-testing" },
-  { title: "Endpoint Security", href: "/services/endpoint-security" },
-];
-
-const column2Links: LinkItem[] = [
-  { title: "About", href: "/about" },
-  { title: "Contact", href: "/contact" },
-  { title: "Careers", href: "/careers" },
-  { title: "404 Page", href: "/404" },
-  { title: "Thank you", href: "/thank-you" },
-];
+const column1Links: LinkItem[] = footerContent.columns.services;
+const column2Links: LinkItem[] = footerContent.columns.company;
 
 function LinkRow({
   item,
@@ -101,7 +91,7 @@ export default function FooterLinks({ isInView }: { isInView: boolean }) {
 
   return (
     <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[60px] lg:gap-x-[110px] w-full">
-      {/* Column 1 (3 items) */}
+      {/* Column 1: Services */}
       <div className="flex flex-col">
         {column1Links.map((item, index) => (
           <LinkRow
@@ -116,7 +106,7 @@ export default function FooterLinks({ isInView }: { isInView: boolean }) {
         ))}
       </div>
 
-      {/* Column 2 (7 items) */}
+      {/* Column 2: Company */}
       <div className="flex flex-col">
         {column2Links.map((item, index) => (
           <LinkRow

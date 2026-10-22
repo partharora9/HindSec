@@ -4,6 +4,7 @@ import React, { useRef } from "react";
 import Link from "next/link";
 import { motion, useMotionValue, useSpring } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
+import { footerContent } from "@/content/siteContent";
 
 interface MagneticButtonProps {
   delay?: number;
@@ -80,7 +81,7 @@ export default function MagneticButton({
 
           {/* Button Text */}
           <span className="relative z-10 text-[#0a0a0a] group-hover:text-white transition-colors duration-400 text-[15px] font-medium tracking-tight">
-            Book a Demo
+            {footerContent.ctaButton}
           </span>
         </motion.div>
       </Link>

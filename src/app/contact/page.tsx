@@ -2,10 +2,11 @@ import type { Metadata } from "next";
 import React, { Suspense } from "react";
 import ContactPageClient from "@/components/contact/ContactPageClient";
 
+import { BRAND_NAME, contactPageContent } from "@/content/siteContent";
+
 export const metadata: Metadata = {
-  title: "Contact | Securio",
-  description:
-    "Reach out today to discuss your cybersecurity assessment, penetration testing, or endpoint security needs. Securio is ready to partner with you.",
+  title: `Contact & Scope | ${BRAND_NAME}`,
+  description: contactPageContent.paragraph,
 };
 
 export default function ContactPage() {

@@ -1,136 +1,147 @@
 "use client";
 
 import React from "react";
+import { marqueeContent } from "@/content/siteContent";
 
 interface LogoItem {
   id: number;
   content: React.ReactNode;
 }
 
-const sevenLogos: LogoItem[] = [
-  // 1. "LOGOIPSUM" (circle R mark, bold)
+const standardItems: LogoItem[] = [
+  // 1. OWASP
   {
     id: 1,
     content: (
       <div className="flex items-center gap-3">
-        <svg className="w-9 h-9 fill-[#3b3f47]" viewBox="0 0 36 36" aria-hidden="true">
-          <path d="M18 4C10.268 4 4 10.268 4 18s6.268 14 14 14 14-6.268 14-14S25.732 4 18 4zm0 5c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z" />
-          <path d="M14 12h5a3.5 3.5 0 0 1 2.8 5.6L24 23h-3.2l-1.9-4.5H16.8V23H14V12zm2.8 4.2h2.2a1.4 1.4 0 1 0 0-2.8h-2.2v2.8z" />
+        <svg className="w-8 h-8 fill-[#3b3f47]" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2L4 5v6.09c0 5.05 3.41 9.76 8 10.91 4.59-1.15 8-5.86 8-10.91V5l-8-3zm0 2.18l6 2.25v4.66c0 3.99-2.6 7.74-6 8.73-3.4-0.99-6-4.74-6-8.73V6.43l6-2.25z" />
         </svg>
-        <span className="text-[21px] font-black tracking-[-0.03em] uppercase text-[#3b3f47]">
-          LOGOIPSUM
-        </span>
+        <div className="flex flex-col text-left leading-[1.05]">
+          <span className="text-[20px] font-black tracking-[-0.02em] text-[#3b3f47]">
+            OWASP
+          </span>
+          <span className="text-[9px] uppercase tracking-[0.16em] font-semibold text-[#3b3f47]/75">
+            Testing Guide
+          </span>
+        </div>
       </div>
     ),
   },
-  // 2. "Department of Fictional Logos" (bars mark)
+  // 2. CVSS
   {
     id: 2,
     content: (
       <div className="flex items-center gap-2.5">
-        <svg className="w-8 h-8 fill-[#3b3f47]" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M6 6h20v4H6V6zm0 8h14v4H6v-4zm0 8h8v4H6v-4z" />
+        <svg className="w-8 h-8 stroke-[#3b3f47] fill-none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+          <circle cx="12" cy="12" r="9" />
+          <path d="M12 7v5l3 3" />
         </svg>
-        <div className="flex flex-col text-left leading-[1.1]">
-          <span className="text-[12px] font-semibold text-[#3b3f47]">
-            Department of
+        <div className="flex flex-col text-left leading-[1.05]">
+          <span className="text-[19px] font-black tracking-tight text-[#3b3f47]">
+            CVSS
           </span>
-          <span className="text-[14px] font-bold text-[#3b3f47] tracking-tight">
-            Fictional Logos
+          <span className="text-[9px] uppercase tracking-[0.16em] font-semibold text-[#3b3f47]/75">
+            v3.1 & v4.0
           </span>
         </div>
       </div>
     ),
   },
-  // 3. shield + "Logoipsum / ACADEMY"
+  // 3. NIST
   {
     id: 3,
     content: (
       <div className="flex items-center gap-2.5">
-        <svg className="w-8 h-8 fill-[#3b3f47]" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M16 4L6 8v9c0 6.5 4.3 12.6 10 14 5.7-1.4 10-7.5 10-14V8L16 4zm0 3.3l7 2.8v7.5c0 4.8-3 9.4-7 10.7-4-1.3-7-5.9-7-10.7v-7.5l7-2.8z" />
-          <path d="M16 11v11c2.8-.9 5-4.2 5-7.7V12.7L16 11z" opacity="0.4" />
+        <svg className="w-8 h-8 fill-[#3b3f47]" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M4 4h4v16H4V4zm6 0h4v16h-4V4zm6 0h4v16h-4V4z" />
         </svg>
-        <div className="flex flex-col text-left leading-[1.1]">
-          <span className="text-[18px] font-bold text-[#3b3f47] tracking-tight">
-            Logoipsum
+        <div className="flex flex-col text-left leading-[1.05]">
+          <span className="text-[19px] font-black tracking-tight text-[#3b3f47]">
+            NIST
           </span>
-          <span className="text-[10px] uppercase tracking-[0.14em] font-medium text-[#3b3f47]/80">
-            ACADEMY
+          <span className="text-[9px] uppercase tracking-[0.14em] font-semibold text-[#3b3f47]/75">
+            SP 800-115
           </span>
         </div>
       </div>
     ),
   },
-  // 4. flower + "Logoipsum"
+  // 4. MITRE ATT&CK
   {
     id: 4,
     content: (
       <div className="flex items-center gap-2.5">
-        <svg className="w-8 h-8 fill-[#3b3f47]" viewBox="0 0 32 32" aria-hidden="true">
-          <circle cx="16" cy="9" r="4.5" />
-          <circle cx="23" cy="16" r="4.5" opacity="0.7" />
-          <circle cx="16" cy="23" r="4.5" opacity="0.85" />
-          <circle cx="9" cy="16" r="4.5" opacity="0.55" />
-          <circle cx="16" cy="16" r="2.5" />
-        </svg>
-        <span className="text-[20px] font-bold text-[#3b3f47] tracking-tight">
-          Logoipsum
-        </span>
-      </div>
-    ),
-  },
-  // 5. star + "LOGOIPSUM / ESTD. 2019"
-  {
-    id: 5,
-    content: (
-      <div className="flex items-center gap-2.5">
-        <svg className="w-8 h-8 fill-[#3b3f47]" viewBox="0 0 32 32" aria-hidden="true">
-          <path d="M16 4l3 5 5 1-3 5 1 5-6-2-6 2 1-5-3-5 5-1 3-5zm0 8a4 4 0 1 0 0 8 4 4 0 0 0 0-8z" />
+        <svg className="w-8 h-8 fill-[#3b3f47]" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M3 3h7v7H3V3zm11 0h7v7h-7V3zM3 14h7v7H3v-7zm11 0h7v7h-7v-7z" />
         </svg>
         <div className="flex flex-col text-left leading-[1.05]">
-          <span className="text-[18px] font-black tracking-tight text-[#3b3f47]">
-            LOGOIPSUM
+          <span className="text-[18px] font-bold tracking-tight text-[#3b3f47]">
+            MITRE ATT&CK
           </span>
-          <span className="text-[9px] tracking-[0.16em] uppercase text-[#3b3f47]/75 font-semibold">
-            ESTD. 2019
+          <span className="text-[9px] uppercase tracking-[0.14em] font-semibold text-[#3b3f47]/75">
+            Framework
           </span>
         </div>
       </div>
     ),
   },
-  // 6. arch + "LOGOIPSUM" (outlined)
+  // 5. PTES
+  {
+    id: 5,
+    content: (
+      <div className="flex items-center gap-2.5">
+        <svg className="w-8 h-8 stroke-[#3b3f47] fill-none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+          <polyline points="4 17 10 11 4 5" />
+          <line x1="12" y1="19" x2="20" y2="19" />
+        </svg>
+        <div className="flex flex-col text-left leading-[1.05]">
+          <span className="text-[19px] font-black tracking-tight text-[#3b3f47]">
+            PTES
+          </span>
+          <span className="text-[9px] uppercase tracking-[0.14em] font-semibold text-[#3b3f47]/75">
+            Execution Standard
+          </span>
+        </div>
+      </div>
+    ),
+  },
+  // 6. ISO 27001
   {
     id: 6,
     content: (
       <div className="flex items-center gap-2.5">
-        <svg
-          className="w-8 h-8 stroke-[#3b3f47] fill-none"
-          viewBox="0 0 32 32"
-          strokeWidth="2.5"
-          aria-hidden="true"
-        >
-          <path d="M7 25V14a9 9 0 0 1 18 0v11" />
-          <path d="M12 25V15a4 4 0 0 1 8 0v10" />
+        <svg className="w-8 h-8 fill-[#3b3f47]" viewBox="0 0 24 24" aria-hidden="true">
+          <path d="M12 2l2.4 4.8 5.3.8-3.8 3.7.9 5.3-4.8-2.5-4.8 2.5.9-5.3L4.3 7.6l5.3-.8L12 2z" />
         </svg>
-        <span className="text-[19px] font-bold tracking-tight text-[#3b3f47]">
-          LOGOIPSUM
-        </span>
+        <div className="flex flex-col text-left leading-[1.05]">
+          <span className="text-[19px] font-bold tracking-tight text-[#3b3f47]">
+            ISO 27001
+          </span>
+          <span className="text-[9px] uppercase tracking-[0.14em] font-semibold text-[#3b3f47]/75">
+            Controls Aligned
+          </span>
+        </div>
       </div>
     ),
   },
-  // 7. circle R + "LOGOIPSUM" (bold)
+  // 7. PCI DSS
   {
     id: 7,
     content: (
-      <div className="flex items-center gap-3">
-        <svg className="w-9 h-9 fill-[#3b3f47]" viewBox="0 0 36 36" aria-hidden="true">
-          <path d="M18 4C10.268 4 4 10.268 4 18s6.268 14 14 14 14-6.268 14-14S25.732 4 18 4zm0 5c4.97 0 9 4.03 9 9s-4.03 9-9 9-9-4.03-9-9 4.03-9 9-9z" />
-          <path d="M14 12h5a3.5 3.5 0 0 1 2.8 5.6L24 23h-3.2l-1.9-4.5H16.8V23H14V12zm2.8 4.2h2.2a1.4 1.4 0 1 0 0-2.8h-2.2v2.8z" />
+      <div className="flex items-center gap-2.5">
+        <svg className="w-8 h-8 stroke-[#3b3f47] fill-none" viewBox="0 0 24 24" strokeWidth="2" aria-hidden="true">
+          <rect x="2" y="5" width="20" height="14" rx="2" />
+          <line x1="2" y1="10" x2="22" y2="10" />
         </svg>
-        <span className="text-[21px] font-black tracking-[-0.03em] uppercase text-[#3b3f47]">
-          LOGOIPSUM
-        </span>
+        <div className="flex flex-col text-left leading-[1.05]">
+          <span className="text-[19px] font-black tracking-tight text-[#3b3f47]">
+            PCI DSS
+          </span>
+          <span className="text-[9px] uppercase tracking-[0.14em] font-semibold text-[#3b3f47]/75">
+            Requirement 11
+          </span>
+        </div>
       </div>
     ),
   },
@@ -138,15 +149,20 @@ const sevenLogos: LogoItem[] = [
 
 export default function LogoMarquee() {
   // Duplicated track (4 sets) for seamless infinite running loop across all screen sizes
-  const trackItems = [...sevenLogos, ...sevenLogos, ...sevenLogos, ...sevenLogos];
+  const trackItems = [...standardItems, ...standardItems, ...standardItems, ...standardItems];
 
   return (
     <section
-      aria-label="Partner Logos"
+      aria-label="Industry Standards and Methodologies"
       className="w-full h-[110px] bg-[#f0f1f3] flex items-center overflow-hidden relative select-none z-10 border-b border-[#e2e4e8]"
     >
-      {/* Running Heading for accessibility & SEO */}
-      <h2 className="sr-only">Trusted Partners & Integrations</h2>
+      <h2 className="sr-only">Testing Aligned with Industry Standards</h2>
+
+      {/* Tiny caption beside the first loop (13px, #4a4f5a) */}
+      <div className="hidden lg:flex items-center gap-2 pl-8 pr-6 py-2 border-r border-[#cfd1d5]/70 text-[13px] text-[#4a4f5a] font-normal whitespace-nowrap flex-shrink-0 z-20 bg-[#f0f1f3]">
+        <span className="w-2 h-2 rounded-full bg-[#2563eb]" />
+        <span>{marqueeContent.caption}</span>
+      </div>
 
       {/* Embedded style tag guarantees running marquee animation is always active */}
       <style
@@ -184,7 +200,7 @@ export default function LogoMarquee() {
         }}
       >
         {/* Continuous 45s linear infinite running marquee, pauses on hover */}
-        <div className="active-running-marquee flex items-center w-max opacity-70 hover:opacity-100 transition-opacity duration-300">
+        <div className="active-running-marquee flex items-center w-max opacity-80 hover:opacity-100 transition-opacity duration-300">
           {trackItems.map((logo, idx) => (
             <div
               key={idx}

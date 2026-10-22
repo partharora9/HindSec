@@ -39,10 +39,11 @@ export default function ContactFormBlock({ isInView }: ContactFormBlockProps) {
   const [btnHovered, setBtnHovered] = useState(false);
   const [btnOffset, setBtnOffset] = useState({ x: 0, y: 0 });
 
-  // Read ?role=, ?topic=, and ?redirect=1 from URL on client mount
+  // Read ?service=, ?role=, ?topic=, and ?redirect=1 from URL on client mount
   useEffect(() => {
     if (typeof window !== "undefined") {
       const params = new URLSearchParams(window.location.search);
+      const serviceParam = params.get("service");
       const roleParam = params.get("role");
       const topicParam = params.get("topic");
       const redirectParam = params.get("redirect");
@@ -51,12 +52,25 @@ export default function ContactFormBlock({ isInView }: ContactFormBlockProps) {
         setRedirectOnSuccess(true);
       }
 
-      if (roleParam) {
+      if (serviceParam) {
+        const serviceNames: Record<string, string> = {
+          vapt: "VAPT (Vulnerability Assessment & Penetration Testing)",
+          va: "Vulnerability Assessment",
+          pentest: "Penetration Testing",
+          appsec: "Application & API Security",
+        };
+        const serviceName =
+          serviceNames[serviceParam.toLowerCase()] || serviceParam;
+        setFormData((prev) => ({
+          ...prev,
+          message: prev.message ? prev.message : `I am interested in: ${serviceName}`,
+        }));
+      } else if (roleParam) {
         const roleTitles: Record<string, string> = {
           "senior-penetration-tester": "Senior Penetration Tester",
+          "application-security-engineer": "Application Security Engineer",
+          "security-analyst-va": "Security Analyst (VA)",
           "cloud-security-engineer": "Cloud Security Engineer",
-          "security-operations-analyst": "Security Operations Analyst",
-          "devsecops-engineer": "DevSecOps Engineer",
         };
         const title =
           roleTitles[roleParam] ||

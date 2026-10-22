@@ -176,7 +176,7 @@ export default function CareersHero() {
                 {!imgError ? (
                   <Image
                     src="/images/careers-hero.jpg"
-                    alt="Securio cybersecurity team collaboration"
+                    alt="Securio offensive security and penetration testing engineers collaborating"
                     fill
                     sizes="(max-width: 1024px) 100vw, 624px"
                     className="object-cover"
