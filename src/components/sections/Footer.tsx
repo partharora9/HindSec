@@ -41,7 +41,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative w-full min-h-[815px] lg:h-[815px] overflow-hidden select-none font-sans text-white z-20"
+      className="relative w-full min-h-[815px] lg:min-h-[860px] lg:h-auto overflow-hidden select-none font-sans text-white z-20"
       style={{
         marginTop: 0,
       }}

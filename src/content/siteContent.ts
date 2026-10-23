@@ -922,9 +922,12 @@ export const footerContent = {
   columns: {
     servicesTitle: "Services",
     services: [
-      { title: "Vulnerability Assessment", href: "/services/vulnerability-assessment" },
-      { title: "Penetration Testing", href: "/services/penetration-testing" },
-      { title: "Application & API Security", href: "/services/application-security" },
+      { title: "AI Security Product Development", href: "/services/ai-security-products" },
+      { title: "Custom LLM Development & Fine-Tuning", href: "/services/custom-llm-development" },
+      { title: "Enterprise AI & Knowledge Assistants", href: "/services/enterprise-ai-knowledge-assistants" },
+      { title: "AI Agents & Business Automation", href: "/services/ai-agents-automation" },
+      { title: "AI Infrastructure & MLOps", href: "/services/ai-infrastructure-mlops" },
+      { title: "AI & LLM Security Assessment", href: "/services/ai-llm-security-assessment" },
     ],
     companyTitle: "Company",
     company: [

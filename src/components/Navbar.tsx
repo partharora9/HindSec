@@ -1,14 +1,15 @@
 "use client";
 
 import React, { useState, useEffect, useRef } from "react";
+import Link from "next/link";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import MegaDropdown, {
-  servicesMenuItems,
   whySecurioMenuItems,
 } from "./MegaDropdown";
 import { BRAND_NAME, navContent } from "@/content/siteContent";
+import { serviceCategories } from "@/data/services";
 
 export interface NavbarProps {
   theme?: "dark" | "light";
@@ -20,7 +21,14 @@ export default function Navbar({ theme }: NavbarProps = {}) {
     theme === "light" ||
     pathname === "/about" ||
     pathname === "/careers" ||
-    pathname === "/contact";
+    pathname === "/contact" ||
+    pathname === "/services" ||
+    pathname.startsWith("/services/");
+
+  const isServicesActive = pathname === "/services" || pathname.startsWith("/services/");
+  const isWhyActive =
+    pathname === "/about" || pathname === "/certifications" || pathname === "/careers";
+  const isContactActive = pathname === "/contact";
 
   const [scrolled, setScrolled] = useState(false);
   const [isOverWhite, setIsOverWhite] = useState(false);
@@ -32,6 +40,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
   const [mobileActiveAccordion, setMobileActiveAccordion] = useState<
     "services" | "why" | null
   >(null);
+  const [mobileExpandedCategory, setMobileExpandedCategory] = useState<string | null>(null);
 
   const navRef = useRef<HTMLElement | null>(null);
   const servicesTriggerRef = useRef<HTMLDivElement | null>(null);
@@ -75,9 +84,21 @@ export default function Navbar({ theme }: NavbarProps = {}) {
       menu === "services" ? servicesTriggerRef.current : whyTriggerRef.current;
     if (triggerEl) {
       const triggerRect = triggerEl.getBoundingClientRect();
-      // Shift left by 20px so the left column's 24px label padding aligns under the trigger text
-      const offset = triggerRect.left - navRect.left - 20;
-      setPanelLeft(offset);
+      if (menu === "services") {
+        // Center the 960px mega-panel relative to trigger and clamp to avoid viewport spill
+        const triggerCenter = triggerRect.left + triggerRect.width / 2;
+        const panelWidth = 960;
+        let leftInNav = triggerCenter - navRect.left - panelWidth / 2;
+
+        const screenLeft = navRect.left + leftInNav;
+        if (screenLeft < 20) {
+          leftInNav = 20 - navRect.left;
+        }
+        setPanelLeft(leftInNav);
+      } else {
+        const offset = triggerRect.left - navRect.left - 20;
+        setPanelLeft(offset);
+      }
     }
   };
 
@@ -89,7 +110,6 @@ export default function Navbar({ theme }: NavbarProps = {}) {
 
   const handleMouseLeaveTriggerOrPanel = () => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
-    // 120ms close delay so moving between trigger and panel doesn't close it
     timeoutRef.current = setTimeout(() => {
       setActiveDropdown(null);
     }, 120);
@@ -145,12 +165,12 @@ export default function Navbar({ theme }: NavbarProps = {}) {
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-0 h-[94px] flex items-center justify-between">
         {/* Left: Securio Logo */}
-        <a
+        <Link
           href="/"
           className="flex items-center gap-[14px] group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-lg p-1"
-          aria-label="Securio Home"
+          aria-label={`${BRAND_NAME} Home`}
         >
-          {/* 2x2 grid of dots (10px, 5px gap) */}
+          {/* 2x2 grid of dots */}
           <motion.div
             whileHover={{ rotate: 90, scale: 1.08 }}
             transition={{ type: "spring", stiffness: 280, damping: 16 }}
@@ -194,7 +214,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
           >
             {BRAND_NAME}
           </span>
-        </a>
+        </Link>
 
         {/* Center: Desktop Navigation Links (hidden below 900px) */}
         <nav
@@ -214,10 +234,10 @@ export default function Navbar({ theme }: NavbarProps = {}) {
               aria-expanded={activeDropdown === "services"}
               aria-haspopup="true"
               className={`group relative flex items-center gap-1.5 py-2 text-[15px] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md px-1 cursor-pointer ${
-                activeDropdown === "services"
+                isServicesActive || activeDropdown === "services"
                   ? isLight
-                    ? "text-[#0a0a0a]"
-                    : "text-white"
+                    ? "text-[#0a0a0a] font-semibold"
+                    : "text-white font-semibold"
                   : isLight
                   ? "text-[#0a0a0a] hover:text-[#0a0a0a]/75"
                   : "text-white/90 hover:text-white"
@@ -241,7 +261,9 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 className={`absolute bottom-0 left-0 h-[2px] transition-all duration-200 ease-out ${
                   isLight ? "bg-[#0a0a0a]" : "bg-white"
                 } ${
-                  activeDropdown === "services" ? "w-full" : "w-0 group-hover:w-full"
+                  isServicesActive || activeDropdown === "services"
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
                 }`}
               />
             </button>
@@ -259,10 +281,10 @@ export default function Navbar({ theme }: NavbarProps = {}) {
               aria-expanded={activeDropdown === "why"}
               aria-haspopup="true"
               className={`group relative flex items-center gap-1.5 py-2 text-[15px] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md px-1 cursor-pointer ${
-                activeDropdown === "why"
+                isWhyActive || activeDropdown === "why"
                   ? isLight
-                    ? "text-[#0a0a0a]"
-                    : "text-white"
+                    ? "text-[#0a0a0a] font-semibold"
+                    : "text-white font-semibold"
                   : isLight
                   ? "text-[#0a0a0a] hover:text-[#0a0a0a]/75"
                   : "text-white/90 hover:text-white"
@@ -286,14 +308,16 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 className={`absolute bottom-0 left-0 h-[2px] transition-all duration-200 ease-out ${
                   isLight ? "bg-[#0a0a0a]" : "bg-white"
                 } ${
-                  activeDropdown === "why" ? "w-full" : "w-0 group-hover:w-full"
+                  isWhyActive || activeDropdown === "why"
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
                 }`}
               />
             </button>
           </div>
 
           {/* 3. Case Studies */}
-          <a
+          <Link
             href="/#case-studies"
             className={`group relative py-2 text-[15px] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md px-1 ${
               isLight
@@ -307,16 +331,16 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 isLight ? "bg-[#0a0a0a]" : "bg-white"
               } w-0 group-hover:w-full`}
             />
-          </a>
+          </Link>
 
           {/* 4. Contact */}
-          <a
+          <Link
             href="/contact"
             className={`group relative py-2 text-[15px] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md px-1 ${
-              pathname === "/contact"
+              isContactActive
                 ? isLight
-                  ? "text-[#6b7078]"
-                  : "text-white/60"
+                  ? "text-[#0a0a0a] font-semibold"
+                  : "text-white font-semibold"
                 : isLight
                 ? "text-[#0a0a0a] hover:text-[#0a0a0a]/75"
                 : "text-white/90 hover:text-white"
@@ -327,14 +351,14 @@ export default function Navbar({ theme }: NavbarProps = {}) {
               className={`absolute bottom-0 left-0 h-[2px] transition-all duration-200 ease-out ${
                 isLight ? "bg-[#0a0a0a]" : "bg-white"
               } ${
-                pathname === "/contact"
-                  ? "w-full opacity-60"
+                isContactActive
+                  ? "w-full"
                   : "w-0 group-hover:w-full"
               }`}
             />
-          </a>
+          </Link>
 
-          {/* Desktop Mega Dropdown Panel (shared, smoothly sliding between triggers) */}
+          {/* Desktop Mega Dropdown Panel */}
           <AnimatePresence>
             {activeDropdown && (
               <MegaDropdown
@@ -343,6 +367,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 onMouseEnter={handleMouseEnterPanel}
                 onMouseLeave={handleMouseLeaveTriggerOrPanel}
                 onClose={() => setActiveDropdown(null)}
+                currentPath={pathname}
               />
             )}
           </AnimatePresence>
@@ -350,28 +375,27 @@ export default function Navbar({ theme }: NavbarProps = {}) {
 
         {/* Right: Book a Demo Button (Desktop) & Hamburger (Mobile) */}
         <div className="flex items-center gap-4">
-          <motion.a
-            href="/contact"
-            whileHover={{ y: -2 }}
-            whileTap={{ scale: 0.97 }}
-            className={`relative overflow-hidden inline-flex items-center justify-center h-[40px] px-[21px] rounded-full text-[15px] font-medium tracking-tight transition-all duration-200 group focus:outline-none focus-visible:ring-2 ${
-              isLight
-                ? "bg-[#050505] text-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] hover:shadow-[0_4px_22px_rgba(0,0,0,0.35)] focus-visible:ring-black focus-visible:ring-offset-white"
-                : "bg-white text-black shadow-[0_2px_10px_rgba(255,255,255,0.15)] hover:shadow-[0_4px_22px_rgba(255,255,255,0.4)] focus-visible:ring-white focus-visible:ring-offset-black"
-            }`}
-          >
-            {/* Light sweep shimmer */}
-            <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden rounded-full">
-              <div
-                className={`w-1/2 h-full bg-gradient-to-r ${
-                  isLight
-                    ? "from-transparent via-white/15 to-transparent"
-                    : "from-transparent via-black/10 to-transparent"
-                } transform -skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out`}
-              />
-            </div>
-            <span className="relative z-10">{navContent.ctaButton}</span>
-          </motion.a>
+          <motion.div whileHover={{ y: -2 }} whileTap={{ scale: 0.97 }}>
+            <Link
+              href="/contact"
+              className={`relative overflow-hidden inline-flex items-center justify-center h-[40px] px-[21px] rounded-full text-[15px] font-medium tracking-tight transition-all duration-200 group focus:outline-none focus-visible:ring-2 ${
+                isLight
+                  ? "bg-[#050505] text-white shadow-[0_2px_10px_rgba(0,0,0,0.15)] hover:shadow-[0_4px_22px_rgba(0,0,0,0.35)] focus-visible:ring-black focus-visible:ring-offset-white"
+                  : "bg-white text-black shadow-[0_2px_10px_rgba(255,255,255,0.15)] hover:shadow-[0_4px_22px_rgba(255,255,255,0.4)] focus-visible:ring-white focus-visible:ring-offset-black"
+              }`}
+            >
+              <div className="absolute inset-0 w-full h-full pointer-events-none overflow-hidden rounded-full">
+                <div
+                  className={`w-1/2 h-full bg-gradient-to-r ${
+                    isLight
+                      ? "from-transparent via-white/15 to-transparent"
+                      : "from-transparent via-black/10 to-transparent"
+                  } transform -skew-x-12 translate-x-[-150%] group-hover:translate-x-[250%] transition-transform duration-1000 ease-in-out`}
+                />
+              </div>
+              <span className="relative z-10">{navContent.ctaButton}</span>
+            </Link>
+          </motion.div>
 
           {/* Mobile hamburger button (< 900px) */}
           <button
@@ -397,7 +421,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="min-[900px]:hidden overflow-hidden bg-[#06102f]/98 backdrop-blur-2xl border-b border-white/15 px-6 py-6 space-y-4"
+            className="min-[900px]:hidden overflow-hidden bg-[#06102f]/98 backdrop-blur-2xl border-b border-white/15 px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto"
           >
             <div className="space-y-3">
               {/* Mobile Services Accordion */}
@@ -410,7 +434,9 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                   }
                   className="flex items-center justify-between w-full py-2 text-white text-[17px] font-medium"
                 >
-                  <span>Services</span>
+                  <span className={isServicesActive ? "text-blue-300 font-semibold" : ""}>
+                    Services
+                  </span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${
                       mobileActiveAccordion === "services" ? "rotate-180" : ""
@@ -418,27 +444,78 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                   />
                 </button>
                 {mobileActiveAccordion === "services" && (
-                  <div className="py-2 space-y-2 border-l border-white/10 ml-2 pl-3 mt-1">
-                    {servicesMenuItems.map((item, idx) => (
-                      <a
-                        key={idx}
-                        href={item.href || `#${item.title.toLowerCase().replace(/\s+/g, "-")}`}
-                        className="flex items-center gap-3 p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.1] transition-colors"
-                        onClick={() => setMobileMenuOpen(false)}
-                      >
-                        <div className="w-[30px] h-[30px] bg-[#0a0a0a] flex items-center justify-center flex-shrink-0">
-                          {item.icon}
+                  <div className="py-2 space-y-2.5 border-l border-white/10 ml-2 pl-3 mt-1">
+                    {/* All Services Overview Link */}
+                    <Link
+                      href="/services"
+                      className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.08] hover:bg-white/[0.14] text-white text-[14px] font-semibold transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <span>All Services Overview</span>
+                      <span>→</span>
+                    </Link>
+
+                    {/* 6 Category Sub-Accordions */}
+                    {serviceCategories.map((cat) => {
+                      const isCatExpanded = mobileExpandedCategory === cat.slug;
+                      const isCatActive = pathname === `/services/${cat.slug}`;
+
+                      return (
+                        <div
+                          key={cat.slug}
+                          className="rounded-lg bg-white/[0.03] border border-white/5 overflow-hidden"
+                        >
+                          <button
+                            onClick={() =>
+                              setMobileExpandedCategory(
+                                isCatExpanded ? null : cat.slug
+                              )
+                            }
+                            className="flex items-center justify-between w-full p-2.5 text-left text-white text-[14px] font-medium hover:bg-white/[0.06] transition-colors"
+                          >
+                            <div className="flex items-center gap-2">
+                              <span
+                                className={`w-2 h-2 rounded-full ${
+                                  isCatActive ? "bg-blue-400" : "bg-white/40"
+                                }`}
+                              />
+                              <span className={isCatActive ? "text-blue-300 font-semibold" : ""}>
+                                {cat.title}
+                              </span>
+                            </div>
+                            <ChevronDown
+                              className={`w-3.5 h-3.5 transition-transform ${
+                                isCatExpanded ? "rotate-180" : ""
+                              }`}
+                            />
+                          </button>
+
+                          {isCatExpanded && (
+                            <div className="px-3 pb-3 pt-1 space-y-2 border-t border-white/5 bg-black/20">
+                              <Link
+                                href={`/services/${cat.slug}`}
+                                className="block text-[12.5px] font-semibold text-blue-300 hover:underline py-1"
+                                onClick={() => setMobileMenuOpen(false)}
+                              >
+                                View {cat.title} Category Page →
+                              </Link>
+                              <div className="space-y-1 pt-1">
+                                {cat.services.map((svc) => (
+                                  <Link
+                                    key={svc.slug}
+                                    href={`/services/${cat.slug}#services-grid`}
+                                    className="block text-[12px] text-white/70 hover:text-white py-0.5 truncate"
+                                    onClick={() => setMobileMenuOpen(false)}
+                                  >
+                                    • {svc.title}
+                                  </Link>
+                                ))}
+                              </div>
+                            </div>
+                          )}
                         </div>
-                        <div>
-                          <div className="text-[14px] font-medium text-white">
-                            {item.title}
-                          </div>
-                          <div className="text-[12px] text-white/60">
-                            {item.description}
-                          </div>
-                        </div>
-                      </a>
-                    ))}
+                      );
+                    })}
                   </div>
                 )}
               </div>
@@ -453,7 +530,9 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                   }
                   className="flex items-center justify-between w-full py-2 text-white text-[17px] font-medium"
                 >
-                  <span>Why {BRAND_NAME}</span>
+                  <span className={isWhyActive ? "text-blue-300 font-semibold" : ""}>
+                    Why {BRAND_NAME}
+                  </span>
                   <ChevronDown
                     className={`w-4 h-4 transition-transform ${
                       mobileActiveAccordion === "why" ? "rotate-180" : ""
@@ -463,7 +542,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 {mobileActiveAccordion === "why" && (
                   <div className="py-2 space-y-2 border-l border-white/10 ml-2 pl-3 mt-1">
                     {whySecurioMenuItems.map((item, idx) => (
-                      <a
+                      <Link
                         key={idx}
                         href={item.href || `#${item.title.toLowerCase().replace(/\s+/g, "-")}`}
                         className="flex items-center gap-3 p-2 rounded-lg bg-white/[0.04] hover:bg-white/[0.1] transition-colors"
@@ -480,39 +559,39 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                             {item.description}
                           </div>
                         </div>
-                      </a>
+                      </Link>
                     ))}
                   </div>
                 )}
               </div>
 
-              <a
+              <Link
                 href="/#case-studies"
                 className="block py-2 text-[17px] font-medium text-white"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Case Studies
-              </a>
+              </Link>
 
-              <a
+              <Link
                 href="/contact"
                 className={`block py-2 text-[17px] font-medium ${
-                  pathname === "/contact" ? "text-white/60" : "text-white"
+                  isContactActive ? "text-blue-300 font-semibold" : "text-white"
                 }`}
                 onClick={() => setMobileMenuOpen(false)}
               >
                 Contact
-              </a>
+              </Link>
             </div>
 
             <div className="pt-4 border-t border-white/10">
-              <a
+              <Link
                 href="/contact"
                 className="w-full h-[46px] rounded-full bg-white text-black font-medium flex items-center justify-center text-[15px]"
                 onClick={() => setMobileMenuOpen(false)}
               >
                 {navContent.ctaButton}
-              </a>
+              </Link>
             </div>
           </motion.div>
         )}
