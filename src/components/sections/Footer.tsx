@@ -2,6 +2,7 @@
 
 import React, { useRef, useState } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import {
   motion,
   useInView,
@@ -29,9 +30,6 @@ export default function Footer() {
   const headingParallaxY = useTransform(scrollYProgress, [0, 1], [30, 0]);
   const bgShiftY = useTransform(scrollYProgress, [0, 1], [40, 0]);
   const darkExpandScale = useTransform(scrollYProgress, [0, 1], [0.8, 1]);
-
-  // Hover states for logo dots
-  const [isLogoHovered, setIsLogoHovered] = useState(false);
 
   // Hover state for interactive underline links
   const [hoveredBottomLink, setHoveredBottomLink] = useState<string | null>(null);
@@ -63,72 +61,19 @@ export default function Footer() {
               textShadow: "0 1px 14px rgba(10, 30, 100, 0.28)",
             }}
           >
-            {/* Logo at y=333 to 361: 2x2 grid of 10px white dots + "HindSEC" (34px, weight 400) */}
+            {/* HindSec Official Logo */}
             <Link
               href="/"
-              onMouseEnter={() => setIsLogoHovered(true)}
-              onMouseLeave={() => setIsLogoHovered(false)}
-              className="group inline-flex items-center gap-[12px] cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-white focus-visible:ring-offset-2 focus-visible:ring-offset-[#3f66cc]"
+              className="group inline-flex items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080b16]"
+              aria-label="HindSec – Cybersecurity & AI Security Services"
             >
-              {/* 4 dots in 2x2 grid (10px dots, 6px gap) */}
-              <motion.div
-                animate={
-                  isLogoHovered && !prefersReduced
-                    ? { rotate: 90 }
-                    : { rotate: 0 }
-                }
-                transition={{ duration: 0.5, ease: "easeInOut" }}
-                className="w-[26px] h-[26px] grid grid-cols-2 gap-[6px]"
-              >
-                {[0, 1, 2, 3].map((dotIdx) => (
-                  <motion.div
-                    key={dotIdx}
-                    initial={{ scale: prefersReduced ? 1 : 0 }}
-                    animate={
-                      isInView
-                        ? {
-                            scale:
-                              isLogoHovered && !prefersReduced
-                                ? [1, 1.35, 1]
-                                : 1,
-                          }
-                        : { scale: 0 }
-                    }
-                    transition={{
-                      scale: {
-                        duration: prefersReduced ? 0 : 0.45,
-                        delay: prefersReduced
-                          ? 0
-                          : isLogoHovered
-                          ? dotIdx * 0.08
-                          : 0.15 + dotIdx * 0.05,
-                        type: "spring",
-                        stiffness: 350,
-                        damping: 18,
-                      },
-                    }}
-                    className="w-[10px] h-[10px] rounded-full bg-white shadow-sm"
-                  />
-                ))}
-              </motion.div>
-
-              {/* "HindSEC" text (34px, weight 400, letter-spacing -0.5px) */}
-              <motion.span
-                initial={{ opacity: 0, x: prefersReduced ? 0 : -8 }}
-                animate={
-                  isInView
-                    ? { opacity: 1, x: 0 }
-                    : { opacity: 0, x: prefersReduced ? 0 : -8 }
-                }
-                transition={{
-                  duration: prefersReduced ? 0 : 0.6,
-                  delay: prefersReduced ? 0 : 0.35,
-                  ease: "easeOut",
-                }}
-                className="text-[30px] sm:text-[34px] font-normal tracking-[-0.5px] text-white leading-none"
-              >
-                {BRAND_NAME}
-              </motion.span>
+              <Image
+                src="/images/hindsec-logo.png"
+                alt="HindSec – Cybersecurity & AI Security Services"
+                width={120}
+                height={38}
+                className="h-[34px] sm:h-[38px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03]"
+              />
             </Link>
 
             {/* Tagline: "Find it before attackers do" (18px, weight 400) */}

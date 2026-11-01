@@ -2,6 +2,7 @@
 
 import React, { useState, useEffect, useRef } from "react";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
@@ -171,56 +172,28 @@ export default function Navbar({ theme }: NavbarProps = {}) {
       }`}
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-0 h-[94px] flex items-center justify-between">
-        {/* Left: HindSEC Logo */}
+        {/* Left: HindSec Official Logo */}
         <Link
           href="/"
-          className="flex items-center gap-[14px] group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-lg p-1"
-          aria-label={`${BRAND_NAME} Home`}
+          className="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg"
+          aria-label="HindSec – Cybersecurity & AI Security Services"
         >
-          {/* 2x2 grid of dots */}
-          <motion.div
-            whileHover={{ rotate: 90, scale: 1.08 }}
-            transition={{ type: "spring", stiffness: 280, damping: 16 }}
-            className="grid grid-cols-2 gap-[5px] w-[25px] h-[25px] items-center justify-center p-0.5"
-          >
-            <span
-              className={`w-[10px] h-[10px] rounded-full block transition-colors ${
-                isLight
-                  ? "bg-[#0a0a0a] group-hover:bg-black/70"
-                  : "bg-white group-hover:bg-blue-100"
-              }`}
-            />
-            <span
-              className={`w-[10px] h-[10px] rounded-full block transition-colors ${
-                isLight
-                  ? "bg-[#0a0a0a] group-hover:bg-black/70"
-                  : "bg-white group-hover:bg-blue-100"
-              }`}
-            />
-            <span
-              className={`w-[10px] h-[10px] rounded-full block transition-colors ${
-                isLight
-                  ? "bg-[#0a0a0a] group-hover:bg-black/70"
-                  : "bg-white group-hover:bg-blue-100"
-              }`}
-            />
-            <span
-              className={`w-[10px] h-[10px] rounded-full block transition-colors ${
-                isLight
-                  ? "bg-[#0a0a0a] group-hover:bg-black/70"
-                  : "bg-white group-hover:bg-blue-100"
-              }`}
-            />
-          </motion.div>
-
-          {/* HindSEC text: 34px, weight 400, tight letter-spacing */}
-          <span
-            className={`text-[34px] font-normal leading-none tracking-[-0.03em] select-none ${
-              isLight ? "text-[#0a0a0a]" : "text-white"
+          <div
+            className={`transition-all duration-200 rounded-xl ${
+              isLight
+                ? "px-3 py-1.5 bg-[#030718] border border-cyan-500/20 shadow-md shadow-black/25"
+                : "py-1"
             }`}
           >
-            {BRAND_NAME}
-          </span>
+            <Image
+              src="/images/hindsec-logo.png"
+              alt="HindSec – Cybersecurity & AI Security Services"
+              width={140}
+              height={44}
+              priority
+              className="h-[32px] sm:h-[40px] lg:h-[44px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+            />
+          </div>
         </Link>
 
         {/* Center: Desktop Navigation Links (hidden below 900px) */}
@@ -369,23 +342,6 @@ export default function Navbar({ theme }: NavbarProps = {}) {
               />
             </button>
           </div>
-
-          {/* 3. Case Studies */}
-          <Link
-            href="/#case-studies"
-            className={`group relative py-2 text-[15px] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md px-1 ${
-              isLight
-                ? "text-[#0a0a0a] hover:text-[#0a0a0a]/75"
-                : "text-white/90 hover:text-white"
-            }`}
-          >
-            <span>Case Studies</span>
-            <span
-              className={`absolute bottom-0 left-0 h-[2px] transition-all duration-200 ease-out ${
-                isLight ? "bg-[#0a0a0a]" : "bg-white"
-              } w-0 group-hover:w-full`}
-            />
-          </Link>
 
           {/* 4. Contact */}
           <Link
@@ -664,14 +620,6 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                   </div>
                 )}
               </div>
-
-              <Link
-                href="/#case-studies"
-                className="block py-2 text-[17px] font-medium text-white"
-                onClick={() => setMobileMenuOpen(false)}
-              >
-                Case Studies
-              </Link>
 
               <Link
                 href="/contact"

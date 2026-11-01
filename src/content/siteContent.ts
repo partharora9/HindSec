@@ -146,7 +146,6 @@ export const navContent = {
     },
   ],
   mainLinks: [
-    { title: "Case Studies", href: "/#case-studies" },
     { title: "Contact", href: "/contact" },
   ],
   ctaButton: "Get a Free Quote",
@@ -1030,7 +1029,6 @@ export const footerContent = {
     ],
     companyTitle: "Company",
     company: [
-      { title: "Case Studies", href: "/#case-studies" },
       { title: "About", href: "/about" },
       { title: "Contact", href: "/contact" },
       { title: "Certifications", href: "/certifications" },
