@@ -132,6 +132,15 @@ export default function FooterBackground({
         }}
       />
 
+      {/* WCAG AA contrast enhancer for left side typography */}
+      <div
+        className="absolute inset-0 pointer-events-none"
+        style={{
+          background:
+            "linear-gradient(to right, rgba(3, 7, 24, 0.45) 0%, rgba(3, 7, 24, 0.22) 30%, transparent 55%)",
+        }}
+      />
+
       {/* ================= LAYER 3: Dark Bulging Right Mass ================= */}
       {/* Bulges toward lower middle (at bottom navy starts around x~1000, at top around x~1300) */}
       <motion.div

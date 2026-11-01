@@ -54,11 +54,11 @@ export default function Footer() {
       <div className="relative z-10 w-full max-w-[1280px] mx-auto h-full px-6 lg:px-0 flex flex-col justify-between pt-[75px] pb-[50px] lg:pt-[80px] lg:pb-[53px]">
         {/* Main Content Layout: Left and Right Columns */}
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-y-0 w-full items-start">
-          {/* ================= LEFT COLUMN (Cols 1-5, x=313) ================= */}
+          {/* ================= LEFT COLUMN (Cols 1-4) ================= */}
           <div
-            className="lg:col-span-5 flex flex-col items-start order-2 lg:order-1 pt-[10px] lg:pt-[250px]"
+            className="lg:col-span-4 flex flex-col items-start order-2 lg:order-1 pt-[10px] lg:pt-[250px]"
             style={{
-              textShadow: "0 1px 14px rgba(10, 30, 100, 0.28)",
+              textShadow: "0 1px 14px rgba(10, 30, 100, 0.4)",
             }}
           >
             {/* HindSec Official Logo */}
@@ -95,8 +95,8 @@ export default function Footer() {
             </motion.p>
           </div>
 
-          {/* ================= RIGHT COLUMN (Cols 6-12, x=985) ================= */}
-          <div className="lg:col-span-7 flex flex-col items-start lg:pl-[67px] order-1 lg:order-2">
+          {/* ================= RIGHT COLUMN (Cols 5-12) ================= */}
+          <div className="lg:col-span-8 flex flex-col items-start lg:pl-10 xl:pl-14 order-1 lg:order-2 w-full">
             {/* Heading at y=85 to 195: 2 lines "Request a free / VAPT scoping call", 48px, weight 400 */}
             <motion.div
               style={{ y: prefersReduced ? 0 : headingParallaxY }}
