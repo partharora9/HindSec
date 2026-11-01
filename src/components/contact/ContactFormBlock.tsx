@@ -241,8 +241,8 @@ export default function ContactFormBlock({ isInView }: ContactFormBlockProps) {
             }}
             className="flex flex-col sm:flex-row gap-[24px] w-full"
           >
-            {/* First Name (393px wide) */}
-            <div className="w-full sm:w-[393px] flex-shrink-0">
+            {/* First Name (responsive width) */}
+            <div className="w-full sm:flex-1 max-w-full lg:max-w-[393px]">
               <label
                 htmlFor="firstName"
                 className={`block text-[15px] font-normal transition-colors duration-200 mb-[20px] leading-none ${
@@ -318,8 +318,8 @@ export default function ContactFormBlock({ isInView }: ContactFormBlockProps) {
               )}
             </div>
 
-            {/* Last Name (393px wide) */}
-            <div className="w-full sm:w-[393px] flex-shrink-0">
+            {/* Last Name (responsive width) */}
+            <div className="w-full sm:flex-1 max-w-full lg:max-w-[393px]">
               <label
                 htmlFor="lastName"
                 className={`block text-[15px] font-normal transition-colors duration-200 mb-[20px] leading-none ${
@@ -409,8 +409,8 @@ export default function ContactFormBlock({ isInView }: ContactFormBlockProps) {
             }}
             className="flex flex-col sm:flex-row gap-[24px] w-full mt-[34px]"
           >
-            {/* Email Address (393px wide) */}
-            <div className="w-full sm:w-[393px] flex-shrink-0">
+            {/* Email Address (responsive width) */}
+            <div className="w-full sm:flex-1 max-w-full lg:max-w-[393px]">
               <label
                 htmlFor="email"
                 className={`block text-[15px] font-normal transition-colors duration-200 mb-[20px] leading-none ${
@@ -484,8 +484,8 @@ export default function ContactFormBlock({ isInView }: ContactFormBlockProps) {
               )}
             </div>
 
-            {/* Phone (optional) (393px wide) */}
-            <div className="w-full sm:w-[393px] flex-shrink-0">
+            {/* Phone (optional) (responsive width) */}
+            <div className="w-full sm:flex-1 max-w-full lg:max-w-[393px]">
               <label
                 htmlFor="phone"
                 className={`block text-[15px] font-normal transition-colors duration-200 mb-[20px] leading-none ${
@@ -609,7 +609,7 @@ export default function ContactFormBlock({ isInView }: ContactFormBlockProps) {
               }}
               whileTap={{ scale: prefersReduced ? 1 : 0.97 }}
               transition={{ type: "spring", stiffness: 350, damping: 20 }}
-              className="w-[253px] h-[56px] rounded-full relative overflow-hidden bg-[#050505] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2b50ae] cursor-pointer"
+              className="w-full sm:w-[253px] h-[52px] sm:h-[56px] rounded-full relative overflow-hidden bg-[#050505] flex items-center justify-center focus:outline-none focus-visible:ring-2 focus-visible:ring-offset-2 focus-visible:ring-[#2b50ae] cursor-pointer"
               aria-label="Submit contact form"
             >
               {/* Blue fill (#2b50ae) sweeps from left (400ms) */}

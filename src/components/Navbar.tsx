@@ -146,6 +146,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
     const handleKeyDown = (e: KeyboardEvent) => {
       if (e.key === "Escape") {
         setActiveDropdown(null);
+        setMobileMenuOpen(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
@@ -155,6 +156,18 @@ export default function Navbar({ theme }: NavbarProps = {}) {
       document.removeEventListener("keydown", handleKeyDown);
     };
   }, []);
+
+  // Lock body scroll when mobile drawer is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = "hidden";
+    } else {
+      document.body.style.overflow = "";
+    }
+    return () => {
+      document.body.style.overflow = "";
+    };
+  }, [mobileMenuOpen]);
 
   return (
     <motion.header
@@ -171,29 +184,21 @@ export default function Navbar({ theme }: NavbarProps = {}) {
           : "bg-transparent border-b border-transparent"
       }`}
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0 h-[94px] flex items-center justify-between">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0 h-[72px] sm:h-[84px] lg:h-[94px] flex items-center justify-between">
         {/* Left: HindSec Official Logo */}
         <Link
           href="/"
-          className="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg"
+          className="flex items-center group focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 rounded-lg py-1"
           aria-label="HindSec – Cybersecurity & AI Security Services"
         >
-          <div
-            className={`transition-all duration-200 rounded-xl ${
-              isLight
-                ? "px-3 py-1.5 bg-[#030718] border border-cyan-500/20 shadow-md shadow-black/25"
-                : "py-1"
-            }`}
-          >
-            <Image
-              src="/images/hindsec-logo.png"
-              alt="HindSec – Cybersecurity & AI Security Services"
-              width={140}
-              height={44}
-              priority
-              className="h-[32px] sm:h-[40px] lg:h-[44px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
-            />
-          </div>
+          <Image
+            src="/images/hindsec-logo.png"
+            alt="HindSec – Cybersecurity & AI Security Services"
+            width={148}
+            height={46}
+            priority
+            className="h-[34px] sm:h-[40px] lg:h-[46px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.02]"
+          />
         </Link>
 
         {/* Center: Desktop Navigation Links (hidden below 900px) */}
@@ -407,10 +412,10 @@ export default function Navbar({ theme }: NavbarProps = {}) {
             </Link>
           </motion.div>
 
-          {/* Mobile hamburger button (< 900px) */}
+          {/* Mobile hamburger button (< 900px, 44x44px touch target) */}
           <button
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-            className={`min-[900px]:hidden p-2 rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 ${
+            className={`min-[900px]:hidden w-[44px] h-[44px] min-w-[44px] min-h-[44px] flex items-center justify-center rounded-lg focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 ${
               isLight
                 ? "text-[#0a0a0a] hover:text-black"
                 : "text-white/90 hover:text-white"
@@ -431,7 +436,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
             animate={{ opacity: 1, height: "auto" }}
             exit={{ opacity: 0, height: 0 }}
             transition={{ duration: 0.3, ease: [0.16, 1, 0.3, 1] }}
-            className="min-[900px]:hidden overflow-hidden bg-[#06102f]/98 backdrop-blur-2xl border-b border-white/15 px-6 py-6 space-y-4 max-h-[85vh] overflow-y-auto"
+            className="min-[900px]:hidden overflow-hidden bg-[#06102f]/98 backdrop-blur-2xl border-b border-white/15 px-6 py-6 space-y-4 max-h-[calc(100dvh-72px)] sm:max-h-[calc(100dvh-84px)] overflow-y-auto overscroll-contain"
           >
             <div className="space-y-3">
               {/* Mobile Services Accordion */}

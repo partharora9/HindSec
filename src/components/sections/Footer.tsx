@@ -39,7 +39,7 @@ export default function Footer() {
   return (
     <footer
       ref={footerRef}
-      className="relative w-full min-h-[815px] lg:min-h-[860px] lg:h-auto overflow-hidden select-none font-sans text-white z-20"
+      className="relative w-full min-h-0 lg:min-h-[860px] lg:h-auto overflow-hidden select-none font-sans text-white z-20"
       style={{
         marginTop: 0,
       }}
@@ -51,28 +51,28 @@ export default function Footer() {
       />
 
       {/* ================= 1280px CONTENT CONTAINER ================= */}
-      <div className="relative z-10 w-full max-w-[1280px] mx-auto h-full px-6 lg:px-0 flex flex-col justify-between pt-[75px] pb-[50px] lg:pt-[80px] lg:pb-[53px]">
+      <div className="relative z-10 w-full max-w-[1280px] mx-auto h-full px-4 sm:px-6 lg:px-0 flex flex-col justify-between pt-[50px] pb-[40px] lg:pt-[80px] lg:pb-[53px]">
         {/* Main Content Layout: Left and Right Columns */}
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-12 lg:gap-y-0 w-full items-start">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-y-10 lg:gap-y-0 w-full items-start">
           {/* ================= LEFT COLUMN (Cols 1-4) ================= */}
           <div
-            className="lg:col-span-4 flex flex-col items-start order-2 lg:order-1 pt-[10px] lg:pt-[250px]"
+            className="lg:col-span-4 flex flex-col items-start order-2 lg:order-1 pt-6 lg:pt-[250px]"
             style={{
               textShadow: "0 1px 14px rgba(10, 30, 100, 0.4)",
             }}
           >
-            {/* HindSec Official Logo */}
+            {/* HindSec Official Logo - Clean Transparent */}
             <Link
               href="/"
-              className="group inline-flex items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080b16]"
+              className="group inline-flex items-center cursor-pointer focus:outline-none focus-visible:ring-2 focus-visible:ring-cyan-400 focus-visible:ring-offset-2 focus-visible:ring-offset-[#080b16] rounded-lg"
               aria-label="HindSec – Cybersecurity & AI Security Services"
             >
               <Image
                 src="/images/hindsec-logo.png"
                 alt="HindSec – Cybersecurity & AI Security Services"
-                width={120}
-                height={38}
-                className="h-[34px] sm:h-[38px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03]"
+                width={204}
+                height={64}
+                className="h-[48px] sm:h-[56px] lg:h-[64px] w-auto object-contain transition-transform duration-200 group-hover:scale-[1.03]"
               />
             </Link>
 
@@ -89,7 +89,7 @@ export default function Footer() {
                 delay: prefersReduced ? 0 : 0.45,
                 ease: "easeOut",
               }}
-              className="mt-[52px] text-[17px] sm:text-[18px] font-normal text-white tracking-tight"
+              className="mt-[24px] sm:mt-[36px] text-[16px] sm:text-[18px] font-normal text-white tracking-tight"
             >
               {footerContent.tagline}
             </motion.p>
@@ -97,12 +97,12 @@ export default function Footer() {
 
           {/* ================= RIGHT COLUMN (Cols 5-12) ================= */}
           <div className="lg:col-span-8 flex flex-col items-start lg:pl-10 xl:pl-14 order-1 lg:order-2 w-full">
-            {/* Heading at y=85 to 195: 2 lines "Request a free / VAPT scoping call", 48px, weight 400 */}
+            {/* Heading */}
             <motion.div
               style={{ y: prefersReduced ? 0 : headingParallaxY }}
               className="flex flex-col items-start"
             >
-              <h2 className="text-[34px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-white">
+              <h2 className="text-[26px] sm:text-[38px] lg:text-[48px] font-normal leading-[1.2] sm:leading-[1.22] tracking-tight sm:tracking-[-1px] text-white">
                 {/* Line 1: Request a free */}
                 <div className="overflow-hidden py-0.5">
                   <motion.div
@@ -171,12 +171,12 @@ export default function Footer() {
             </motion.div>
 
             {/* White pill button: Get a Free Quote */}
-            <div className="mt-[36px]">
+            <div className="mt-[24px] sm:mt-[36px]">
               <MagneticButton isInView={isInView} delay={0.28} />
             </div>
 
-            {/* Link columns start at y=364 (78px gap under button) */}
-            <div className="mt-[78px] w-full">
+            {/* Link columns responsive gap */}
+            <div className="mt-[36px] sm:mt-[50px] lg:mt-[78px] w-full">
               <FooterLinks isInView={isInView} />
             </div>
           </div>

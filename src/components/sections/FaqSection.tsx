@@ -56,20 +56,20 @@ function FaqRow({
         aria-expanded={isOpen}
         aria-controls={`faq-answer-${item.id}`}
         id={`faq-btn-${item.id}`}
-        className="w-full text-left py-[30px] flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2b50ae] focus-visible:ring-offset-2 transition-colors cursor-pointer select-none"
+        className="w-full text-left py-5 sm:py-[30px] flex items-center justify-between gap-4 focus:outline-none focus-visible:ring-2 focus-visible:ring-[#2b50ae] focus-visible:ring-offset-2 transition-colors cursor-pointer select-none min-h-[44px]"
       >
-        {/* Question Text: 19px, weight 400, #0a0a0a, shifts 6px right on hover when closed */}
+        {/* Question Text: shifts 6px right on hover when closed */}
         <motion.span
           animate={
             isRowHovered && !isOpen && !prefersReduced ? { x: 6 } : { x: 0 }
           }
           transition={{ duration: 0.25, ease: "easeOut" }}
-          className="text-[17px] sm:text-[18px] lg:text-[19px] font-normal text-[#0a0a0a] leading-[1.35] pr-4 max-w-[530px]"
+          className="text-[16px] sm:text-[18px] lg:text-[19px] font-normal text-[#0a0a0a] leading-[1.35] pr-4 max-w-[530px]"
         >
           {item.question}
         </motion.span>
 
-        {/* Plus Icon (stroke 1.5, 20px, rotates 45deg to x, turns blue on hover when closed) */}
+        {/* Plus Icon (rotates 45deg to x, turns blue on hover when closed) */}
         <motion.div
           animate={{
             rotate: isOpen && !prefersReduced ? 45 : 0,
@@ -131,9 +131,9 @@ function FaqRow({
               animate={{ y: 0, opacity: 1 }}
               exit={{ y: prefersReduced ? 0 : 6, opacity: prefersReduced ? 1 : 0 }}
               transition={{ duration: prefersReduced ? 0 : 0.25 }}
-              className="pb-[28px] max-w-[520px]"
+              className="pb-5 sm:pb-[28px] max-w-[520px]"
             >
-              <p className="text-[17px] leading-[1.55] text-[#4a4f5a] font-normal">
+              <p className="text-[15px] sm:text-[17px] leading-[1.55] text-[#4a4f5a] font-normal">
                 {item.answer}
               </p>
             </motion.div>
@@ -165,10 +165,10 @@ function AskCard() {
       href="/contact"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group block w-full lg:w-[608px] h-[205px] bg-[#ffffff] rounded-none p-[24px] relative transition-transform duration-300 ease-out hover:-translate-y-1 select-none cursor-pointer"
+      className="group block w-full lg:w-[608px] min-h-[160px] sm:h-[185px] lg:h-[205px] bg-[#ffffff] rounded-none p-5 sm:p-[24px] relative transition-transform duration-300 ease-out hover:-translate-y-1 select-none cursor-pointer"
       style={{ boxShadow: "none" }}
     >
-      {/* Top right diagonal arrow (24px, stroke 1.5, shifts 4px up-right on hover) */}
+      {/* Top right diagonal arrow */}
       <motion.div
         animate={
           isHovered && !prefersReduced
@@ -176,7 +176,7 @@ function AskCard() {
             : { x: 0, y: 0 }
         }
         transition={{ duration: 0.3, ease: "easeOut" }}
-        className="absolute top-[24px] right-[24px] w-[24px] h-[24px] flex items-center justify-center text-[#0a0a0a]"
+        className="absolute top-5 right-5 sm:top-[24px] sm:right-[24px] w-[24px] h-[24px] flex items-center justify-center text-[#0a0a0a]"
       >
         <svg
           width="24"
@@ -194,15 +194,15 @@ function AskCard() {
       </motion.div>
 
       {/* Bottom-left content */}
-      <div className="absolute bottom-[24px] left-[24px] right-[24px] flex flex-col items-start">
-        {/* Title: 24px, weight 400, #0a0a0a */}
-        <h4 className="text-[20px] sm:text-[22px] lg:text-[24px] font-normal text-[#0a0a0a] leading-[1.25]">
+      <div className="absolute bottom-5 left-5 right-5 sm:bottom-[24px] sm:left-[24px] sm:right-[24px] flex flex-col items-start">
+        {/* Title */}
+        <h4 className="text-[18px] sm:text-[22px] lg:text-[24px] font-normal text-[#0a0a0a] leading-[1.25]">
           {faqContent.askCard.title}
         </h4>
 
-        {/* 12px below: Talk to our team with underline animation on hover */}
-        <div className="mt-[12px] relative inline-block">
-          <span className="text-[17px] sm:text-[18px] text-[#4a4f5a] font-normal leading-normal">
+        {/* Talk to our team with underline animation on hover */}
+        <div className="mt-2 sm:mt-[12px] relative inline-block">
+          <span className="text-[15px] sm:text-[17px] lg:text-[18px] text-[#4a4f5a] font-normal leading-normal">
             {faqContent.askCard.sub}
           </span>
           {/* Thin black underline animating under "Talk to our team" */}
@@ -233,27 +233,26 @@ export default function FaqSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#f0f1f3] pt-0 pb-[150px] select-none text-[#0a0a0a]"
+      className="w-full bg-[#f0f1f3] pt-0 pb-[60px] sm:pb-[100px] lg:pb-[150px] select-none text-[#0a0a0a]"
       id="faq"
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0">
-        {/* Two Columns: 608px each with 64px gap */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[64px] items-stretch">
-          {/* ================= LEFT COLUMN (608px wide, flex space-between) ================= */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0">
+        {/* Two Columns: 608px each with responsive gap */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-[64px] items-stretch">
+          {/* ================= LEFT COLUMN ================= */}
           <div className="w-full lg:w-[608px] flex flex-col justify-between">
             {/* Top: Section label & Heading */}
             <div>
-              {/* Section label: 15px, uppercase, letter-spacing 0.03em, weight 400, #0a0a0a */}
               <motion.div
                 initial={{ opacity: 0, y: prefersReduced ? 0 : 16 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: prefersReduced ? 0 : 16 }}
                 transition={{ duration: prefersReduced ? 0 : 0.6, ease: "easeOut" }}
-                className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
+                className="text-[13px] sm:text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
               >
                 {faqContent.label}
               </motion.div>
 
-              {/* Section heading: 40px below label, on two lines "Frequently / Asked Questions", 48px */}
+              {/* Section heading: responsive size */}
               <motion.h2
                 initial={{ opacity: 0, y: prefersReduced ? 0 : 20 }}
                 animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: prefersReduced ? 0 : 20 }}
@@ -262,7 +261,7 @@ export default function FaqSection() {
                   delay: prefersReduced ? 0 : 0.1,
                   ease: "easeOut",
                 }}
-                className="mt-[40px] text-[34px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]"
+                className="mt-[24px] sm:mt-[32px] lg:mt-[40px] text-[28px] sm:text-[38px] lg:text-[48px] font-normal leading-[1.2] sm:leading-[1.22] tracking-[-0.5px] sm:tracking-[-1px] text-[#0a0a0a]"
               >
                 {faqContent.headingLine1}
                 <br />
@@ -270,7 +269,7 @@ export default function FaqSection() {
               </motion.h2>
             </div>
 
-            {/* Bottom: AskCard (white card 608px x 205px) */}
+            {/* Bottom: AskCard */}
             <motion.div
               initial={{ opacity: 0, y: prefersReduced ? 0 : 24 }}
               animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: prefersReduced ? 0 : 24 }}
@@ -279,7 +278,7 @@ export default function FaqSection() {
                 delay: prefersReduced ? 0 : 0.25,
                 ease: "easeOut",
               }}
-              className="mt-[60px] lg:mt-0"
+              className="mt-8 sm:mt-12 lg:mt-0"
             >
               <AskCard />
             </motion.div>

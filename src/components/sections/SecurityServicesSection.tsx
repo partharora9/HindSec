@@ -12,34 +12,34 @@ export default function SecurityServicesSection() {
   const card4 = homeSecurityServices.cards[3];
 
   return (
-    <section className="w-full bg-[#f0f1f3] pt-[80px] pb-[70px] select-none text-[#0a0a0a]">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0">
+    <section className="w-full bg-[#f0f1f3] py-[50px] sm:py-[70px] lg:pt-[80px] lg:pb-[70px] select-none text-[#0a0a0a]">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0">
         {/* Label: 15px, uppercase, letter-spacing 0.03em, #0a0a0a, weight 400 */}
         <motion.div
           initial={{ opacity: 0, y: 14 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.6 }}
-          className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
+          className="text-[14px] sm:text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
         >
           {homeSecurityServices.label}
         </motion.div>
 
-        {/* 40px below: Heading (48px, line-height 1.22, letter-spacing -1px) */}
+        {/* Heading */}
         <motion.h2
           initial={{ opacity: 0, y: 20 }}
           whileInView={{ opacity: 1, y: 0 }}
           viewport={{ once: true }}
           transition={{ duration: 0.7, delay: 0.1 }}
-          className="mt-[40px] text-[36px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]"
+          className="mt-[24px] sm:mt-[32px] lg:mt-[40px] text-[28px] sm:text-[38px] lg:text-[48px] font-normal leading-[1.2] sm:leading-[1.22] tracking-tight sm:tracking-[-1px] text-[#0a0a0a]"
         >
           {homeSecurityServices.headingLine1}
           <br />
           {homeSecurityServices.headingLine2}
         </motion.h2>
 
-        {/* 70px below: 4 Cards in responsive grid */}
-        <div className="mt-[70px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[24px]">
+        {/* 4 Cards in responsive grid */}
+        <div className="mt-[36px] sm:mt-[50px] lg:mt-[70px] grid grid-cols-1 md:grid-cols-2 xl:grid-cols-4 gap-[24px]">
           {/* ================= CARD 1: VAPT & Penetration Testing ================= */}
           <Link href={card1.href} className="block group">
             <motion.div
@@ -51,7 +51,7 @@ export default function SecurityServicesSection() {
             >
               {/* Gradient Box */}
               <div
-                className="w-full h-[440px] rounded-none p-[32px_20px] flex items-center justify-center transition-all duration-600 ease-out"
+                className="w-full h-[360px] sm:h-[400px] lg:h-[440px] rounded-none p-[32px_20px] flex items-center justify-center transition-all duration-600 ease-out"
                 style={{
                   background: card1.gradient,
                   backgroundSize: "130% 130%",
@@ -59,7 +59,7 @@ export default function SecurityServicesSection() {
                 }}
               >
                 {/* White Panel */}
-                <div className="w-[260px] h-[300px] bg-white rounded-none p-[16px_14px] shadow-sm transition-transform duration-300 ease-out group-hover:-translate-y-[6px] flex flex-col justify-between text-[13px] leading-tight text-[#0a0a0a]">
+                <div className="w-full max-w-[260px] h-[300px] bg-white rounded-none p-[16px_14px] shadow-sm transition-transform duration-300 ease-out group-hover:-translate-y-[6px] flex flex-col justify-between text-[13px] leading-tight text-[#0a0a0a]">
                   {/* Step 1: Asset discovered */}
                   <div className="flex items-center gap-2">
                     <div className="w-5 h-5 rounded-[3px] bg-[#f97316] flex items-center justify-center text-white flex-shrink-0">
@@ -218,14 +218,14 @@ export default function SecurityServicesSection() {
               className="flex flex-col cursor-pointer h-full"
             >
               <div
-                className="w-full h-[440px] rounded-none p-[32px_20px] flex items-center justify-center transition-all duration-600 ease-out"
+                className="w-full h-[360px] sm:h-[400px] lg:h-[440px] rounded-none p-[32px_20px] flex items-center justify-center transition-all duration-600 ease-out"
                 style={{
                   background: card2.gradient,
                   backgroundSize: "130% 130%",
                   backgroundPosition: "0% 0%",
                 }}
               >
-                <div className="w-[260px] h-[300px] bg-white rounded-none p-[18px_16px] shadow-sm transition-transform duration-300 ease-out group-hover:-translate-y-[6px] flex flex-col text-[#0a0a0a]">
+                <div className="w-full max-w-[260px] h-[300px] bg-white rounded-none p-[18px_16px] shadow-sm transition-transform duration-300 ease-out group-hover:-translate-y-[6px] flex flex-col text-[#0a0a0a]">
                   <h4 className="text-[18px] font-normal text-[#0a0a0a] leading-tight">
                     {card2.panel.title}
                   </h4>
@@ -345,14 +345,14 @@ export default function SecurityServicesSection() {
               className="flex flex-col cursor-pointer h-full"
             >
               <div
-                className="w-full h-[440px] rounded-none p-[32px_20px] flex items-center justify-center transition-all duration-600 ease-out"
+                className="w-full h-[360px] sm:h-[400px] lg:h-[440px] rounded-none p-[32px_20px] flex items-center justify-center transition-all duration-600 ease-out"
                 style={{
                   background: card3.gradient,
                   backgroundSize: "130% 130%",
                   backgroundPosition: "0% 0%",
                 }}
               >
-                <div className="w-[260px] h-[300px] bg-white rounded-none p-[18px_16px] shadow-sm transition-transform duration-300 ease-out group-hover:-translate-y-[6px] flex flex-col text-[#0a0a0a]">
+                <div className="w-full max-w-[260px] h-[300px] bg-white rounded-none p-[18px_16px] shadow-sm transition-transform duration-300 ease-out group-hover:-translate-y-[6px] flex flex-col text-[#0a0a0a]">
                   <h4 className="text-[18px] font-normal text-[#0a0a0a] leading-tight mb-3">
                     {card3.panel.title}
                   </h4>
@@ -416,14 +416,14 @@ export default function SecurityServicesSection() {
               className="flex flex-col cursor-pointer h-full"
             >
               <div
-                className="w-full h-[440px] rounded-none p-[32px_20px] flex items-center justify-center transition-all duration-600 ease-out"
+                className="w-full h-[360px] sm:h-[400px] lg:h-[440px] rounded-none p-[32px_20px] flex items-center justify-center transition-all duration-600 ease-out"
                 style={{
                   background: card4.gradient,
                   backgroundSize: "130% 130%",
                   backgroundPosition: "0% 0%",
                 }}
               >
-                <div className="w-[260px] h-[300px] bg-white rounded-none p-[18px_16px] shadow-sm transition-transform duration-300 ease-out group-hover:-translate-y-[6px] flex flex-col justify-between text-[#0a0a0a]">
+                <div className="w-full max-w-[260px] h-[300px] bg-white rounded-none p-[18px_16px] shadow-sm transition-transform duration-300 ease-out group-hover:-translate-y-[6px] flex flex-col justify-between text-[#0a0a0a]">
                   <div>
                     <div className="flex items-center justify-between">
                       <h4 className="text-[18px] font-normal text-[#0a0a0a] leading-tight">

@@ -44,7 +44,7 @@ function CaseStudyCard({
   return (
     <div
       ref={cardRef}
-      className="relative w-full h-[420px] lg:h-[480px] rounded-none overflow-hidden group cursor-pointer select-none bg-gradient-to-br from-[#1e293b] to-[#0f172a]"
+      className="relative w-full h-[360px] sm:h-[420px] lg:h-[480px] rounded-none overflow-hidden group cursor-pointer select-none bg-gradient-to-br from-[#1e293b] to-[#0f172a]"
     >
       <a href={item.href} className="block w-full h-full relative" aria-label={`${item.line1} ${item.line2}`}>
         {/* Full-bleed Photo with reveal scale & hover zoom & scroll parallax */}
@@ -105,13 +105,12 @@ function CaseStudyCard({
           }}
         />
 
-        {/* Top-Right Square Tile: 79x79px, flush to corner */}
-        <div className="absolute top-0 right-0 w-[79px] h-[79px] bg-white z-20 flex items-center justify-center transition-colors duration-300 ease-out group-hover:bg-[#0a0a0a]">
-          {/* 30px thin black diagonal arrow, rotates 45deg to point right, turns white */}
-          <div className="w-[30px] h-[30px] flex items-center justify-center text-[#0a0a0a] group-hover:text-white transition-all duration-300 ease-out group-hover:rotate-45">
+        {/* Top-Right Square Tile: responsive size, flush to corner */}
+        <div className="absolute top-0 right-0 w-[56px] h-[56px] sm:w-[68px] sm:h-[68px] lg:w-[79px] lg:h-[79px] bg-white z-20 flex items-center justify-center transition-colors duration-300 ease-out group-hover:bg-[#0a0a0a]">
+          {/* Thin black diagonal arrow, rotates 45deg to point right, turns white */}
+          <div className="w-[22px] h-[22px] sm:w-[26px] sm:h-[26px] lg:w-[30px] lg:h-[30px] flex items-center justify-center text-[#0a0a0a] group-hover:text-white transition-all duration-300 ease-out group-hover:rotate-45">
             <svg
-              width="30"
-              height="30"
+              className="w-full h-full"
               viewBox="0 0 24 24"
               fill="none"
               stroke="currentColor"
@@ -125,15 +124,15 @@ function CaseStudyCard({
           </div>
         </div>
 
-        {/* Bottom-left text: 32px left padding, 40px bottom padding */}
-        <div className="absolute bottom-0 left-0 right-0 z-10 pl-[32px] pr-[32px] pb-[40px] pointer-events-none flex flex-col items-start">
-          {/* CASE STUDY: 18px, uppercase, weight 400, white, letter-spacing 0.02em */}
-          <span className="text-[18px] uppercase font-normal tracking-[0.02em] text-white">
+        {/* Bottom-left text: responsive padding */}
+        <div className="absolute bottom-0 left-0 right-0 z-10 pl-5 sm:pl-7 lg:pl-[32px] pr-5 sm:pr-7 lg:pr-[32px] pb-6 sm:pb-8 lg:pb-[40px] pointer-events-none flex flex-col items-start">
+          {/* CASE STUDY category label */}
+          <span className="text-[14px] sm:text-[16px] lg:text-[18px] uppercase font-normal tracking-[0.02em] text-white">
             {item.category}
           </span>
 
-          {/* 30px below: Title in white, 30px, weight 400, line-height 1.25, 2 lines, slides up 6px on hover */}
-          <h3 className="mt-[30px] text-[24px] sm:text-[28px] lg:text-[30px] font-normal leading-[1.25] text-white transition-transform duration-300 ease-out group-hover:-translate-y-[6px]">
+          {/* Title in white, responsive font and spacing */}
+          <h3 className="mt-[18px] sm:mt-[24px] lg:mt-[30px] text-[20px] sm:text-[26px] lg:text-[30px] font-normal leading-[1.25] text-white transition-transform duration-300 ease-out group-hover:-translate-y-[6px]">
             {item.line1}
             <br />
             {item.line2}
@@ -152,21 +151,21 @@ export default function CaseStudiesSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#f0f1f3] pt-0 pb-[150px] select-none text-[#0a0a0a]"
+      className="w-full bg-[#f0f1f3] pt-0 pb-[60px] sm:pb-[100px] lg:pb-[150px] select-none text-[#0a0a0a]"
       id="case-studies"
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0">
-        {/* Section label: 15px, uppercase, letter-spacing 0.03em, weight 400, #0a0a0a */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0">
+        {/* Section label: responsive font */}
         <motion.div
           initial={{ opacity: 0, y: prefersReduced ? 0 : 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: prefersReduced ? 0 : 16 }}
           transition={{ duration: prefersReduced ? 0 : 0.6, ease: "easeOut" }}
-          className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
+          className="text-[13px] sm:text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
         >
           {caseStudiesContent.label}
         </motion.div>
 
-        {/* Section heading: 48px, weight 400, line-height 1.22, letter-spacing -1px, 40px below label */}
+        {/* Section heading: responsive size and margin */}
         <motion.h2
           initial={{ opacity: 0, y: prefersReduced ? 0 : 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: prefersReduced ? 0 : 20 }}
@@ -175,13 +174,13 @@ export default function CaseStudiesSection() {
             delay: prefersReduced ? 0 : 0.1,
             ease: "easeOut",
           }}
-          className="mt-[40px] text-[34px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]"
+          className="mt-[24px] sm:mt-[32px] lg:mt-[40px] text-[28px] sm:text-[38px] lg:text-[48px] font-normal leading-[1.2] sm:leading-[1.22] tracking-[-0.5px] sm:tracking-[-1px] text-[#0a0a0a]"
         >
           {caseStudiesContent.heading}
         </motion.h2>
 
-        {/* 70px below heading: 3 image cards in a row (405px x 480px, 32px gap) */}
-        <div className="mt-[70px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-[32px]">
+        {/* Responsive grid: 1 column on mobile, 2 on tablet, 3 on desktop */}
+        <div className="mt-[36px] sm:mt-[50px] lg:mt-[70px] grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-[32px]">
           {caseStudies.map((item, index) => (
             <CaseStudyCard
               key={item.id}

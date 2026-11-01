@@ -66,11 +66,11 @@ export default function TeamSection({
     <section
       ref={sectionRef}
       onMouseMove={handleMouseMove}
-      className="relative w-full bg-[#f0f1f3] pt-[130px] pb-[100px] select-none text-[#0a0a0a]"
+      className="relative w-full bg-[#f0f1f3] pt-[60px] sm:pt-[100px] lg:pt-[130px] pb-[60px] sm:pb-[80px] lg:pb-[100px] select-none text-[#0a0a0a]"
       id="team"
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0">
-        {/* Section Label: 15px, uppercase, letter-spacing 0.03em, weight 400, #0a0a0a */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0">
+        {/* Section Label: responsive font */}
         <motion.div
           initial={{ opacity: 0, y: prefersReduced ? 0 : 16 }}
           animate={
@@ -79,13 +79,13 @@ export default function TeamSection({
               : { opacity: 0, y: prefersReduced ? 0 : 16 }
           }
           transition={{ duration: prefersReduced ? 0.2 : 0.6, ease: "easeOut" }}
-          className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
+          className="text-[13px] sm:text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
         >
           {label}
         </motion.div>
 
-        {/* 40px below label: Heading "Experts in security &\ncompliance" (48px) */}
-        <h2 className="mt-[40px] text-[34px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]">
+        {/* Heading with responsive spacing & sizing */}
+        <h2 className="mt-[24px] sm:mt-[32px] lg:mt-[40px] text-[28px] sm:text-[38px] lg:text-[48px] font-normal leading-[1.2] sm:leading-[1.22] tracking-[-0.5px] sm:tracking-[-1px] text-[#0a0a0a]">
           {headingLines.map((line, idx) => (
             <div key={idx} className="overflow-hidden py-0.5">
               <motion.div
@@ -111,8 +111,8 @@ export default function TeamSection({
           ))}
         </h2>
 
-        {/* 80px below heading: 4-column team row (328px pitch, text only, no photos) */}
-        <div className="mt-[80px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-12 lg:gap-y-0 gap-x-[32px] w-full">
+        {/* Responsive grid: 1 col mobile, 2 col tablet, 4 col desktop */}
+        <div className="mt-[36px] sm:mt-[50px] lg:mt-[80px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-y-8 sm:gap-y-12 lg:gap-y-0 gap-x-[32px] w-full">
           {members.map((member, idx) => {
             const isHovered = hoveredIndex === idx;
             const isDimmed = hoveredIndex !== null && !isHovered;

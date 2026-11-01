@@ -34,9 +34,9 @@ export default function AboutHero({ label, heading, photo }: AboutHeroProps) {
   return (
     <section
       ref={containerRef}
-      className="relative w-full bg-[#f0f1f3] pt-[212px] pb-0 select-none text-[#0a0a0a]"
+      className="relative w-full bg-[#f0f1f3] pt-[120px] sm:pt-[160px] lg:pt-[212px] pb-0 select-none text-[#0a0a0a]"
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0">
         {/* Section Label: 15px, uppercase, letter-spacing 0.03em, weight 400, #0a0a0a */}
         <motion.div
           initial={{ opacity: 0, y: prefersReduced ? 0 : 14 }}

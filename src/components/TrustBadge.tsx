@@ -51,10 +51,10 @@ export default function TrustBadge() {
       animate="visible"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="inline-flex items-center h-[46px] pl-[8px] pr-[18px] rounded-full bg-white/[0.07] backdrop-blur-md border border-white/[0.16] animate-badge-shimmer shadow-[0_4px_24px_rgba(0,0,0,0.2)] cursor-default select-none transition-transform duration-300 hover:scale-[1.015]"
+      className="inline-flex items-center max-w-full h-[40px] sm:h-[46px] pl-[6px] sm:pl-[8px] pr-[12px] sm:pr-[18px] rounded-full bg-white/[0.07] backdrop-blur-md border border-white/[0.16] animate-badge-shimmer shadow-[0_4px_24px_rgba(0,0,0,0.2)] cursor-default select-none transition-transform duration-300 hover:scale-[1.015]"
     >
       {/* Overlapping Avatars */}
-      <div className="flex items-center -space-x-2">
+      <div className="flex items-center -space-x-2 flex-shrink-0">
         {avatars.map((avatar, idx) => (
           <motion.div
             key={idx}
@@ -66,7 +66,7 @@ export default function TrustBadge() {
             }
             className="relative z-[1] hover:z-10 transition-shadow"
           >
-            <div className="relative w-[30px] h-[30px] rounded-full overflow-hidden ring-[1.5px] ring-[#081335] shadow-sm">
+            <div className="relative w-[24px] h-[24px] sm:w-[30px] sm:h-[30px] rounded-full overflow-hidden ring-[1.5px] ring-[#081335] shadow-sm">
               <Image
                 src={avatar.src}
                 alt={avatar.alt}
@@ -82,7 +82,7 @@ export default function TrustBadge() {
       </div>
 
       {/* Badge Text */}
-      <span className="ml-[13px] text-[17px] font-medium text-white/95 tracking-[-0.015em] whitespace-nowrap">
+      <span className="ml-2 sm:ml-[13px] text-[12.5px] sm:text-[15px] lg:text-[17px] font-medium text-white/95 tracking-[-0.015em] truncate">
         {heroContent.trustBadge}
       </span>
     </motion.div>

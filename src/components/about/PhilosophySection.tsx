@@ -36,14 +36,14 @@ export default function PhilosophySection({
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#f0f1f3] pt-[150px] pb-0 select-none text-[#0a0a0a]"
+      className="w-full bg-[#f0f1f3] pt-[60px] sm:pt-[100px] lg:pt-[150px] pb-0 select-none text-[#0a0a0a]"
       id="philosophy"
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0">
-        <div className="grid grid-cols-1 lg:grid-cols-[600px_1fr] gap-[64px] items-start">
-          {/* ================= LEFT COLUMN (600px wide) ================= */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0">
+        <div className="grid grid-cols-1 lg:grid-cols-[600px_1fr] gap-8 sm:gap-12 lg:gap-[64px] items-start">
+          {/* ================= LEFT COLUMN ================= */}
           <div className="flex flex-col max-w-[600px] w-full">
-            {/* Section Label: 15px, uppercase, letter-spacing 0.03em, weight 400, #0a0a0a */}
+            {/* Section Label: responsive font */}
             <motion.div
               initial={{ opacity: 0, y: prefersReduced ? 0 : 16 }}
               animate={
@@ -55,13 +55,13 @@ export default function PhilosophySection({
                 duration: prefersReduced ? 0.2 : 0.6,
                 ease: "easeOut",
               }}
-              className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
+              className="text-[13px] sm:text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
             >
               {label}
             </motion.div>
 
-            {/* 40px below label: Heading "We make complexity feel / simple" (48px) */}
-            <h2 className="mt-[40px] text-[34px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]">
+            {/* Heading with responsive font and margin */}
+            <h2 className="mt-[24px] sm:mt-[32px] lg:mt-[40px] text-[28px] sm:text-[38px] lg:text-[48px] font-normal leading-[1.2] sm:leading-[1.22] tracking-[-0.5px] sm:tracking-[-1px] text-[#0a0a0a]">
               {/* Line 1: We make complexity feel */}
               <div className="overflow-hidden py-0.5">
                 <motion.div

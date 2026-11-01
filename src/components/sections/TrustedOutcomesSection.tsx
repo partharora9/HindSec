@@ -44,11 +44,10 @@ function FeatureGridCard({
       }}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className="group flex flex-col items-start w-full cursor-default"
-      style={{ minHeight: "220px" }}
+      className="group flex flex-col items-start w-full cursor-default min-h-0 sm:min-h-[220px]"
     >
-      {/* 44px thin-line icon, 40px above title */}
-      <div className="w-[44px] h-[44px] flex items-center justify-center mb-[40px]">
+      {/* 44px thin-line icon, responsive margin above title */}
+      <div className="w-[44px] h-[44px] flex items-center justify-center mb-[24px] sm:mb-[40px]">
         <FeatureIcon
           type={item.type}
           isHovered={isHovered}
@@ -62,7 +61,7 @@ function FeatureGridCard({
         <motion.h3
           animate={isHovered && !prefersReduced ? { x: 4 } : { x: 0 }}
           transition={{ duration: 0.3, ease: "easeOut" }}
-          className="text-[26px] sm:text-[28px] lg:text-[30px] font-normal text-[#0a0a0a] leading-[1.2] tracking-normal"
+          className="text-[22px] sm:text-[26px] lg:text-[30px] font-normal text-[#0a0a0a] leading-[1.2] tracking-normal"
         >
           {item.title}
         </motion.h3>
@@ -76,8 +75,8 @@ function FeatureGridCard({
         />
       </div>
 
-      {/* Description: 17px, line-height 27px, #4a4f5a, max 3 lines, 14px below title */}
-      <p className="mt-[14px] text-[17px] leading-[27px] text-[#4a4f5a] font-normal line-clamp-3">
+      {/* Description: responsive text & line-height */}
+      <p className="mt-[10px] sm:mt-[14px] text-[15px] sm:text-[17px] leading-[24px] sm:leading-[27px] text-[#4a4f5a] font-normal line-clamp-none sm:line-clamp-3">
         {item.description}
       </p>
     </motion.div>
@@ -92,21 +91,21 @@ export default function TrustedOutcomesSection() {
   return (
     <section
       ref={sectionRef}
-      className="w-full bg-[#f0f1f3] pt-0 pb-[150px] select-none text-[#0a0a0a]"
+      className="w-full bg-[#f0f1f3] pt-0 pb-[60px] sm:pb-[100px] lg:pb-[150px] select-none text-[#0a0a0a]"
       id="trusted-outcomes"
     >
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0">
-        {/* Section label: 15px, uppercase, letter-spacing 0.03em, weight 400, #0a0a0a */}
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0">
+        {/* Section label */}
         <motion.div
           initial={{ opacity: 0, y: prefersReduced ? 0 : 16 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: prefersReduced ? 0 : 16 }}
           transition={{ duration: prefersReduced ? 0 : 0.6, ease: "easeOut" }}
-          className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
+          className="text-[13px] sm:text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
         >
           {solutionSuiteContent.label}
         </motion.div>
 
-        {/* Section heading: 48px, weight 400, line-height 1.22, letter-spacing -1px, 40px below label */}
+        {/* Section heading */}
         <motion.h2
           initial={{ opacity: 0, y: prefersReduced ? 0 : 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: prefersReduced ? 0 : 20 }}
@@ -115,13 +114,13 @@ export default function TrustedOutcomesSection() {
             delay: prefersReduced ? 0 : 0.1,
             ease: "easeOut",
           }}
-          className="mt-[40px] text-[34px] sm:text-[40px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]"
+          className="mt-[24px] sm:mt-[32px] lg:mt-[40px] text-[28px] sm:text-[38px] lg:text-[48px] font-normal leading-[1.2] sm:leading-[1.22] tracking-[-0.5px] sm:tracking-[-1px] text-[#0a0a0a]"
         >
           {solutionSuiteContent.heading}
         </motion.h2>
 
-        {/* 70px below heading: 3-column x 2-row grid (405px wide, 32px gap, row pitch ~272px) */}
-        <div className="mt-[70px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[32px] gap-y-[52px]">
+        {/* Responsive grid: 1 column on mobile, 2 on tablet, 3 on desktop */}
+        <div className="mt-[36px] sm:mt-[50px] lg:mt-[70px] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-8 lg:gap-x-[32px] gap-y-8 sm:gap-y-[52px]">
           {features.map((item, index) => (
             <FeatureGridCard
               key={item.id}

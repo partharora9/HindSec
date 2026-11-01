@@ -9,20 +9,20 @@ export default function CyberDefenseProcessSection() {
   const processSteps = vaptProcessContent.steps;
 
   return (
-    <section className="w-full bg-[#f0f1f3] mt-[140px] pb-[160px] select-none text-[#0a0a0a]">
-      <div className="max-w-[1280px] mx-auto px-6 lg:px-0">
-        {/* Two Columns: Left 608px, Right 608px, Gap 64px, Both 720px tall */}
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-[64px] items-stretch">
-          {/* ================= LEFT COLUMN (608px x 720px) ================= */}
+    <section className="w-full bg-[#f0f1f3] mt-[60px] sm:mt-[100px] lg:mt-[140px] pb-[60px] sm:pb-[100px] lg:pb-[160px] select-none text-[#0a0a0a]">
+      <div className="max-w-[1280px] mx-auto px-4 sm:px-6 lg:px-0">
+        {/* Two Columns: Left 608px, Right 608px, Gap responsive */}
+        <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 sm:gap-12 lg:gap-[64px] items-stretch">
+          {/* ================= LEFT COLUMN ================= */}
           <div className="w-full lg:w-[608px] h-auto lg:h-[720px] flex flex-col justify-between">
-            {/* Top Heading: 48px, line-height 1.22, letter-spacing -1px */}
+            {/* Top Heading */}
             <motion.div
               initial={{ opacity: 0, y: 20 }}
               whileInView={{ opacity: 1, y: 0 }}
               viewport={{ once: true }}
               transition={{ duration: 0.7 }}
             >
-              <h2 className="text-[36px] sm:text-[42px] lg:text-[48px] font-normal leading-[1.22] tracking-[-1px] text-[#0a0a0a]">
+              <h2 className="text-[28px] sm:text-[38px] lg:text-[48px] font-normal leading-[1.2] sm:leading-[1.22] tracking-[-0.5px] sm:tracking-[-1px] text-[#0a0a0a]">
                 {vaptProcessContent.headingLine1}
                 <br />
                 {vaptProcessContent.headingLine2}
@@ -30,7 +30,7 @@ export default function CyberDefenseProcessSection() {
             </motion.div>
 
             {/* Bottom Accordion of 3 Items */}
-            <div className="mt-12 lg:mt-0 flex flex-col border-t border-[#cfd1d5]">
+            <div className="mt-8 lg:mt-0 flex flex-col border-t border-[#cfd1d5]">
               {processSteps.map((step) => {
                 const isOpen = activeStep === step.id;
 
@@ -43,16 +43,16 @@ export default function CyberDefenseProcessSection() {
                       onClick={() => setActiveStep(step.id)}
                       aria-expanded={isOpen}
                       aria-controls={`step-content-${step.id}`}
-                      className="w-full text-left py-6 flex items-center justify-between group focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 cursor-pointer"
+                      className="w-full text-left py-4 sm:py-6 flex items-center justify-between group focus:outline-none focus-visible:ring-1 focus-visible:ring-blue-500 cursor-pointer min-h-[44px]"
                     >
-                      {/* Title: 26px, weight 400, shifts 6px right on hover */}
-                      <span className="text-[26px] font-normal text-[#0a0a0a] transition-all duration-200 group-hover:translate-x-1.5">
+                      {/* Title */}
+                      <span className="text-[20px] sm:text-[24px] lg:text-[26px] font-normal text-[#0a0a0a] transition-all duration-200 group-hover:translate-x-1.5 pr-2">
                         {step.title}
                       </span>
 
-                      {/* Number: 26px, turns blue (#2b50ae) on hover */}
+                      {/* Number */}
                       <span
-                        className={`text-[26px] font-normal transition-colors duration-200 ${
+                        className={`text-[20px] sm:text-[24px] lg:text-[26px] font-normal transition-colors duration-200 ${
                           isOpen
                             ? "text-[#2b50ae]"
                             : "text-[#0a0a0a] group-hover:text-[#2b50ae]"
@@ -73,7 +73,7 @@ export default function CyberDefenseProcessSection() {
                           transition={{ duration: 0.35, ease: "easeInOut" }}
                           className="overflow-hidden"
                         >
-                          <div className="pb-10 pt-1 text-[18px] font-normal leading-[1.5] text-[#4a4f5a] max-w-[530px]">
+                          <div className="pb-6 sm:pb-8 lg:pb-10 pt-1 text-[15px] sm:text-[17px] lg:text-[18px] font-normal leading-[1.5] text-[#4a4f5a] max-w-[530px]">
                             {step.description}
                           </div>
                         </motion.div>
@@ -85,13 +85,13 @@ export default function CyberDefenseProcessSection() {
             </div>
           </div>
 
-          {/* ================= RIGHT COLUMN (608px x 720px) ================= */}
+          {/* ================= RIGHT COLUMN ================= */}
           <motion.div
             initial={{ opacity: 0, x: 40, scale: 0.97 }}
             whileInView={{ opacity: 1, x: 0, scale: 1 }}
             viewport={{ once: true }}
             transition={{ duration: 0.8, ease: "easeOut" }}
-            className="w-full lg:w-[608px] h-[520px] sm:h-[620px] lg:h-[720px] rounded-none p-[20px] sm:p-[40px] flex items-center justify-center relative overflow-hidden"
+            className="w-full lg:w-[608px] h-[380px] sm:h-[520px] lg:h-[720px] rounded-none p-4 sm:p-8 lg:p-[40px] flex items-center justify-center relative overflow-hidden"
             style={{
               background:
                 "linear-gradient(135deg, #8fd0ff 0%, #4a7cf0 38%, #2646c2 72%, #02041a 100%)",
@@ -115,8 +115,8 @@ export default function CyberDefenseProcessSection() {
               }}
             />
 
-            {/* Centered White Dashboard Panel: 480px x 309px, sharp corners */}
-            <div className="w-full max-w-[480px] h-[309px] bg-white rounded-none shadow-[0_24px_60px_rgba(2,4,26,0.35)] flex overflow-hidden relative z-10 text-[6px] text-slate-700 leading-tight">
+            {/* Centered White Dashboard Panel */}
+            <div className="w-full max-w-[480px] h-[280px] sm:h-[309px] bg-white rounded-none shadow-[0_24px_60px_rgba(2,4,26,0.35)] flex overflow-hidden relative z-10 text-[6px] text-slate-700 leading-tight origin-center scale-[0.92] sm:scale-100">
               {/* Left narrow icon sidebar with 4-dot logo and avatar */}
               <div className="w-[28px] h-full bg-[#f8fafc] border-r border-slate-200/80 flex flex-col justify-between items-center py-2.5 flex-shrink-0">
                 <div className="flex flex-col items-center gap-3">
