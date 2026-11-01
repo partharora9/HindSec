@@ -239,7 +239,7 @@ export default function MegaDropdown({
                 VAPT Compliance & Regulatory Frameworks
               </span>
               <span className="text-[11px] bg-[#dcfce7] text-[#15803d] px-2 py-0.5 font-semibold">
-                8 Standards • Audit-Ready Attestation
+                Enterprise Standards • Audit-Ready Attestation
               </span>
             </div>
             <Link
@@ -282,7 +282,7 @@ export default function MegaDropdown({
 
           {/* Footer Bar */}
           <div className="mt-4 pt-3 border-t border-[#f0f1f3] flex items-center justify-between text-[12px] text-[#4a4f5a]">
-            <span>Preparing for an external audit, SOC 2 certification, or CERT-In review?</span>
+            <span>Preparing for an external audit, SOC 2 certification, or ISO 27001 review?</span>
             <Link
               href="/contact?service=compliance"
               onClick={onClose}

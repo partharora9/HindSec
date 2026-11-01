@@ -23,9 +23,9 @@ import {
 } from "lucide-react";
 
 export const metadata: Metadata = {
-  title: `VAPT Compliance Services | ISO 27001, SOC 2, PCI-DSS, CERT-In | ${BRAND_NAME}`,
+  title: `VAPT Compliance Services | ISO 27001, SOC 2, PCI-DSS, HIPAA | ${BRAND_NAME}`,
   description:
-    "Achieve and maintain regulatory compliance with certified VAPT assessments mapped to ISO 27001, SOC 2 Type II, PCI-DSS 4.0, CERT-In, HIPAA, RBI, SEBI, and DPDP Act frameworks.",
+    "Achieve and maintain regulatory compliance with certified VAPT assessments mapped to ISO 27001, SOC 2 Type II, PCI-DSS 4.0, HIPAA, RBI, SEBI, and DPDP Act frameworks.",
   alternates: {
     canonical: `${siteMetadata.siteUrl}/compliance`,
   },
@@ -87,22 +87,6 @@ const frameworksList = [
       "CDE perimeter segmentation verification",
       "CVSS v3.1 scoring on all findings",
       "PCI-QSA aligned compliance report",
-    ],
-  },
-  {
-    id: "cert-in",
-    title: "CERT-In Empanelled Audits",
-    tag: "National Cybersecurity",
-    badge: "India Regulatory",
-    description:
-      "Mandatory security auditing for government departments, critical infrastructure, Indian utilities, and public cloud operators adhering to CERT-In guidelines.",
-    icon: Building2,
-    href: "/services/vapt-compliance-services#cert-in-security-auditing",
-    features: [
-      "CERT-In cybersecurity guideline alignment",
-      "Network architecture & firewall configuration review",
-      "Website and API vulnerability assessment",
-      "Clean Cyber Security Certificate issuance",
     ],
   },
   {
@@ -231,7 +215,7 @@ export default function ComplianceServicesPage() {
             </h1>
 
             <p className="text-[19px] sm:text-[21px] font-normal text-[#334155] leading-relaxed mb-8">
-              Pass your security audits with zero surprises. {BRAND_NAME} delivers certified, evidence-backed penetration testing mapped directly to ISO 27001, SOC 2, PCI-DSS, CERT-In, HIPAA, RBI, and DPDP Act frameworks.
+              Pass your security audits with zero surprises. {BRAND_NAME} delivers certified, evidence-backed penetration testing mapped directly to ISO 27001, SOC 2, PCI-DSS, HIPAA, RBI, and DPDP Act frameworks.
             </p>
 
             <div className="flex flex-wrap items-center gap-4">

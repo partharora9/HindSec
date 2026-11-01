@@ -45,7 +45,6 @@ export const siteMetadata = {
     "ISO 27001 VAPT",
     "SOC 2 penetration testing",
     "PCI DSS compliance audit",
-    "CERT-In audit",
     "OWASP Top 10",
     "CVSS scoring",
     "compliance security audit",
@@ -78,7 +77,7 @@ export const navContent = {
     },
     {
       title: "VAPT Compliance Audits",
-      description: "ISO 27001, SOC 2, PCI-DSS, CERT-In & HIPAA audits",
+      description: "ISO 27001, SOC 2, PCI-DSS, HIPAA & RBI audits",
       href: "/compliance",
       iconType: "browser-window" as const,
     },
@@ -98,11 +97,6 @@ export const navContent = {
       title: "PCI-DSS 4.0 Requirement 11",
       description: "Internal, external & segmentation penetration testing",
       href: "/services/vapt-compliance-services#pci-dss-penetration-testing",
-    },
-    {
-      title: "CERT-In Empanelled Audits",
-      description: "Government mandate & critical infrastructure compliance",
-      href: "/services/vapt-compliance-services#cert-in-security-auditing",
     },
     {
       title: "HIPAA Security Rule Pentest",
@@ -296,7 +290,7 @@ export const homeSecurityServices = {
     {
       id: "vapt-compliance" as const,
       title: "VAPT Compliance & Audits",
-      caption: "Audit-ready testing for ISO 27001, SOC 2, PCI-DSS, CERT-In, HIPAA & RBI.",
+      caption: "Audit-ready testing for ISO 27001, SOC 2, PCI-DSS, HIPAA, RBI & DPDP Act.",
       href: "/compliance",
       gradient: "linear-gradient(135deg, #1e3a8a 0%, #0f172a 45%, #020617 80%, #000108 100%)",
       panel: {
@@ -305,7 +299,7 @@ export const homeSecurityServices = {
           { name: "ISO 27001:2022", status: "Audit-Ready", tag: "ISMS A.8" },
           { name: "SOC 2 Type II", status: "Verified", tag: "TSC Security" },
           { name: "PCI-DSS 4.0", status: "Compliant", tag: "Req 11.3" },
-          { name: "CERT-In Audit", status: "Attested", tag: "National" },
+          { name: "DPDP Act 2023", status: "Audit-Ready", tag: "Privacy" },
         ],
       },
     },
@@ -953,7 +947,7 @@ export const certificationsContent = {
       id: "compliance",
       title: "Compliance support",
       description:
-        "Testing reports designed to support compliance audits and security reviews including ISO 27001, PCI DSS, SOC 2, DPDP Act, and CERT-In guidelines.",
+        "Testing reports designed to support compliance audits and security reviews including ISO 27001, PCI DSS, SOC 2, DPDP Act, and NIST guidelines.",
     },
   ],
 };
@@ -998,7 +992,7 @@ export const contactPageContent = {
       appsec: "I am interested in: Application & API Security",
       ai: "I am interested in: AI & LLM Security Assessment",
       training: "I am interested in: Cybersecurity Awareness Training & Phishing Simulation",
-      compliance: "I am interested in: VAPT Compliance Services (ISO 27001, SOC 2, PCI-DSS, CERT-In, HIPAA)",
+      compliance: "I am interested in: VAPT Compliance Services (ISO 27001, SOC 2, PCI-DSS, HIPAA, RBI)",
     } as Record<string, string>,
   },
 };
@@ -1023,7 +1017,7 @@ export const footerContent = {
       { title: "ISO 27001 ISMS Audit", href: "/services/vapt-compliance-services#iso-27001-vapt-audit" },
       { title: "SOC 2 Type II VAPT", href: "/services/vapt-compliance-services#soc2-type-2-penetration-testing" },
       { title: "PCI-DSS 4.0 Testing", href: "/services/vapt-compliance-services#pci-dss-penetration-testing" },
-      { title: "CERT-In Security Audit", href: "/services/vapt-compliance-services#cert-in-security-auditing" },
+      { title: "DPDP Act Privacy Audit", href: "/services/vapt-compliance-services#dpdp-gdpr-privacy-security-testing" },
       { title: "HIPAA Security Rule", href: "/services/vapt-compliance-services#hipaa-technical-safeguards-audit" },
       { title: "RBI / SEBI Cyber Audit", href: "/services/vapt-compliance-services#rbi-sebi-irdai-cyber-framework" },
     ],

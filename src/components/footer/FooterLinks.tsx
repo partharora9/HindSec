@@ -71,9 +71,9 @@ export const footerColumnsData: FooterColumn[] = [
         href: "/services/vapt-compliance-services#pci-dss-penetration-testing",
       },
       {
-        label: "CERT-In Security Audit",
-        fullLabel: "CERT-In Empaneled Cybersecurity Audit",
-        href: "/services/vapt-compliance-services#cert-in-security-auditing",
+        label: "DPDP Act Privacy Audit",
+        fullLabel: "DPDP Act 2023 & GDPR Technical Privacy Pentest",
+        href: "/services/vapt-compliance-services#dpdp-gdpr-privacy-security-testing",
       },
       {
         label: "HIPAA Security Rule",

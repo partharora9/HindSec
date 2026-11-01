@@ -307,7 +307,7 @@ export const serviceCategories: ServiceCategory[] = [
     title: "VAPT Compliance & Regulatory Audits",
     tagline: "Audit-ready vulnerability assessment and penetration testing mapped to global compliance frameworks.",
     summary:
-      "Accelerate your certification audits and satisfy regulatory mandates with rigorous VAPT testing mapped directly to ISO 27001, SOC 2 Type II, PCI-DSS 4.0, CERT-In, HIPAA, RBI, SEBI, and DPDP Act requirements.",
+      "Accelerate your certification audits and satisfy regulatory mandates with rigorous VAPT testing mapped directly to ISO 27001, SOC 2 Type II, PCI-DSS 4.0, HIPAA, RBI, SEBI, and DPDP Act requirements.",
     icon: "FileCheck2",
     services: [
       {
@@ -330,13 +330,6 @@ export const serviceCategories: ServiceCategory[] = [
         shortDescription:
           "Mandatory internal and external network pentesting, segmentation checks, and application assessments for cardholder data environments (CDE).",
         icon: "FileLock2",
-      },
-      {
-        slug: "cert-in-security-auditing",
-        title: "CERT-In Empanelled Security Audits",
-        shortDescription:
-          "Comprehensive cybersecurity auditing for government ministries, critical infrastructure, and Indian regulated entities with CERT-In attestation.",
-        icon: "Building2",
       },
       {
         slug: "hipaa-technical-safeguards-audit",
