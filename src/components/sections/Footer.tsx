@@ -63,7 +63,7 @@ export default function Footer() {
               textShadow: "0 1px 14px rgba(10, 30, 100, 0.28)",
             }}
           >
-            {/* Logo at y=333 to 361: 2x2 grid of 10px white dots + "Securio" (34px, weight 400) */}
+            {/* Logo at y=333 to 361: 2x2 grid of 10px white dots + "HindSEC" (34px, weight 400) */}
             <Link
               href="/"
               onMouseEnter={() => setIsLogoHovered(true)}
@@ -112,7 +112,7 @@ export default function Footer() {
                 ))}
               </motion.div>
 
-              {/* "Securio" text (34px, weight 400, letter-spacing -0.5px) */}
+              {/* "HindSEC" text (34px, weight 400, letter-spacing -0.5px) */}
               <motion.span
                 initial={{ opacity: 0, x: prefersReduced ? 0 : -8 }}
                 animate={
@@ -278,7 +278,7 @@ export default function Footer() {
               ))}
             </motion.div>
 
-            {/* Credit line: © <current year> Securio. All rights reserved. */}
+            {/* Credit line: © <current year> HindSEC. All rights reserved. */}
             <motion.div
               initial={{ opacity: 0 }}
               animate={isInView ? { opacity: 1 } : { opacity: 0 }}

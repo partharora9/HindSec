@@ -21,7 +21,7 @@ export default function ServiceCard({ service, index }: ServiceCardProps) {
       className="group relative flex flex-col justify-between bg-white border border-[#e2e4e8] p-6 lg:p-7 rounded-none transition-shadow duration-200 hover:shadow-md focus-within:ring-2 focus-within:ring-black"
     >
       <div>
-        {/* Icon square badge: matching Securio 32x32 / 36x36 dark tile styling */}
+        {/* Icon square badge: matching HindSEC 32x32 / 36x36 dark tile styling */}
         <div className="w-[38px] h-[38px] bg-[#0a0a0a] rounded-none flex items-center justify-center text-white mb-5 group-hover:bg-[#1a2b49] transition-colors">
           <ServiceIcon name={service.icon} className="w-[18px] h-[18px] text-white" />
         </div>

@@ -12,7 +12,8 @@ interface LinkItem {
 }
 
 const column1Links: LinkItem[] = footerContent.columns.services;
-const column2Links: LinkItem[] = footerContent.columns.company;
+const column2Links: LinkItem[] = footerContent.columns.compliance || [];
+const column3Links: LinkItem[] = footerContent.columns.company;
 
 function LinkRow({
   item,
@@ -90,9 +91,12 @@ export default function FooterLinks({ isInView }: { isInView: boolean }) {
   const [hoveredTitle, setHoveredTitle] = useState<string | null>(null);
 
   return (
-    <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-[60px] lg:gap-x-[110px] w-full">
+    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-x-[40px] lg:gap-x-[48px] gap-y-8 w-full">
       {/* Column 1: Services */}
       <div className="flex flex-col">
+        <div className="text-[12px] uppercase tracking-wider text-white/50 font-semibold mb-2">
+          {footerContent.columns.servicesTitle}
+        </div>
         {column1Links.map((item, index) => (
           <LinkRow
             key={item.title}
@@ -106,14 +110,35 @@ export default function FooterLinks({ isInView }: { isInView: boolean }) {
         ))}
       </div>
 
-      {/* Column 2: Company */}
+      {/* Column 2: Compliance Services */}
       <div className="flex flex-col">
+        <div className="text-[12px] uppercase tracking-wider text-white/50 font-semibold mb-2">
+          {footerContent.columns.complianceTitle || "Compliance"}
+        </div>
         {column2Links.map((item, index) => (
           <LinkRow
             key={item.title}
             item={item}
             index={index}
             columnIndex={1}
+            hoveredTitle={hoveredTitle}
+            setHoveredTitle={setHoveredTitle}
+            isInView={isInView}
+          />
+        ))}
+      </div>
+
+      {/* Column 3: Company */}
+      <div className="flex flex-col">
+        <div className="text-[12px] uppercase tracking-wider text-white/50 font-semibold mb-2">
+          {footerContent.columns.companyTitle}
+        </div>
+        {column3Links.map((item, index) => (
+          <LinkRow
+            key={item.title}
+            item={item}
+            index={index}
+            columnIndex={2}
             hoveredTitle={hoveredTitle}
             setHoveredTitle={setHoveredTitle}
             isInView={isInView}

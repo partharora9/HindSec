@@ -6,7 +6,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ChevronDown, Menu, X } from "lucide-react";
 import { usePathname } from "next/navigation";
 import MegaDropdown, {
-  whySecurioMenuItems,
+  whyHindSecMenuItems,
 } from "./MegaDropdown";
 import { BRAND_NAME, navContent } from "@/content/siteContent";
 import { serviceCategories } from "@/data/services";
@@ -22,28 +22,31 @@ export default function Navbar({ theme }: NavbarProps = {}) {
     pathname === "/about" ||
     pathname === "/careers" ||
     pathname === "/contact" ||
+    pathname === "/compliance" ||
     pathname === "/services" ||
     pathname.startsWith("/services/");
 
-  const isServicesActive = pathname === "/services" || pathname.startsWith("/services/");
+  const isServicesActive = pathname === "/services" || (pathname.startsWith("/services/") && pathname !== "/services/vapt-compliance-services");
+  const isComplianceActive = pathname === "/compliance" || pathname === "/services/vapt-compliance-services";
   const isWhyActive =
     pathname === "/about" || pathname === "/certifications" || pathname === "/careers";
   const isContactActive = pathname === "/contact";
 
   const [scrolled, setScrolled] = useState(false);
   const [isOverWhite, setIsOverWhite] = useState(false);
-  const [activeDropdown, setActiveDropdown] = useState<"services" | "why" | null>(
-    null
-  );
+  const [activeDropdown, setActiveDropdown] = useState<
+    "services" | "compliance" | "why" | null
+  >(null);
   const [panelLeft, setPanelLeft] = useState<number>(0);
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [mobileActiveAccordion, setMobileActiveAccordion] = useState<
-    "services" | "why" | null
+    "services" | "compliance" | "why" | null
   >(null);
   const [mobileExpandedCategory, setMobileExpandedCategory] = useState<string | null>(null);
 
   const navRef = useRef<HTMLElement | null>(null);
   const servicesTriggerRef = useRef<HTMLDivElement | null>(null);
+  const complianceTriggerRef = useRef<HTMLDivElement | null>(null);
   const whyTriggerRef = useRef<HTMLDivElement | null>(null);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -77,17 +80,21 @@ export default function Navbar({ theme }: NavbarProps = {}) {
     return () => observer.disconnect();
   }, [pathname]);
 
-  const updatePanelPosition = (menu: "services" | "why") => {
+  const updatePanelPosition = (menu: "services" | "compliance" | "why") => {
     if (!navRef.current) return;
     const navRect = navRef.current.getBoundingClientRect();
     const triggerEl =
-      menu === "services" ? servicesTriggerRef.current : whyTriggerRef.current;
+      menu === "services"
+        ? servicesTriggerRef.current
+        : menu === "compliance"
+        ? complianceTriggerRef.current
+        : whyTriggerRef.current;
     if (triggerEl) {
       const triggerRect = triggerEl.getBoundingClientRect();
-      if (menu === "services") {
-        // Center the 960px mega-panel relative to trigger and clamp to avoid viewport spill
+      if (menu === "services" || menu === "compliance") {
+        // Center the mega-panel relative to trigger and clamp to avoid viewport spill
         const triggerCenter = triggerRect.left + triggerRect.width / 2;
-        const panelWidth = 960;
+        const panelWidth = menu === "services" ? 960 : 880;
         let leftInNav = triggerCenter - navRect.left - panelWidth / 2;
 
         const screenLeft = navRect.left + leftInNav;
@@ -102,7 +109,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
     }
   };
 
-  const handleMouseEnterTrigger = (menu: "services" | "why") => {
+  const handleMouseEnterTrigger = (menu: "services" | "compliance" | "why") => {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
     updatePanelPosition(menu);
     setActiveDropdown(menu);
@@ -119,7 +126,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
     if (timeoutRef.current) clearTimeout(timeoutRef.current);
   };
 
-  const toggleDropdown = (menu: "services" | "why") => {
+  const toggleDropdown = (menu: "services" | "compliance" | "why") => {
     if (activeDropdown === menu) {
       setActiveDropdown(null);
     } else {
@@ -164,7 +171,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
       }`}
     >
       <div className="max-w-[1280px] mx-auto px-6 lg:px-0 h-[94px] flex items-center justify-between">
-        {/* Left: Securio Logo */}
+        {/* Left: HindSEC Logo */}
         <Link
           href="/"
           className="flex items-center gap-[14px] group focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-lg p-1"
@@ -206,7 +213,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
             />
           </motion.div>
 
-          {/* Securio text: 34px, weight 400, tight letter-spacing */}
+          {/* HindSEC text: 34px, weight 400, tight letter-spacing */}
           <span
             className={`text-[34px] font-normal leading-none tracking-[-0.03em] select-none ${
               isLight ? "text-[#0a0a0a]" : "text-white"
@@ -269,7 +276,54 @@ export default function Navbar({ theme }: NavbarProps = {}) {
             </button>
           </div>
 
-          {/* 2. Why Securio Trigger */}
+          {/* 2. Compliance Services Trigger */}
+          <div
+            ref={complianceTriggerRef}
+            className="relative"
+            onMouseEnter={() => handleMouseEnterTrigger("compliance")}
+            onMouseLeave={handleMouseLeaveTriggerOrPanel}
+          >
+            <button
+              onClick={() => toggleDropdown("compliance")}
+              aria-expanded={activeDropdown === "compliance"}
+              aria-haspopup="true"
+              className={`group relative flex items-center gap-1.5 py-2 text-[15px] font-medium transition-colors duration-200 focus:outline-none focus-visible:ring-2 focus-visible:ring-blue-400 rounded-md px-1 cursor-pointer ${
+                isComplianceActive || activeDropdown === "compliance"
+                  ? isLight
+                    ? "text-[#0a0a0a] font-semibold"
+                    : "text-white font-semibold"
+                  : isLight
+                  ? "text-[#0a0a0a] hover:text-[#0a0a0a]/75"
+                  : "text-white/90 hover:text-white"
+              }`}
+            >
+              <span>Compliance Services</span>
+              <motion.div
+                animate={{ rotate: activeDropdown === "compliance" ? 180 : 0 }}
+                transition={{ duration: 0.22, ease: "easeInOut" }}
+              >
+                <ChevronDown
+                  className={`w-[14px] h-[14px] transition-colors ${
+                    isLight
+                      ? "text-[#0a0a0a]"
+                      : "text-white/80 group-hover:text-white"
+                  }`}
+                />
+              </motion.div>
+              {/* Animated underline */}
+              <span
+                className={`absolute bottom-0 left-0 h-[2px] transition-all duration-200 ease-out ${
+                  isLight ? "bg-[#0a0a0a]" : "bg-white"
+                } ${
+                  isComplianceActive || activeDropdown === "compliance"
+                    ? "w-full"
+                    : "w-0 group-hover:w-full"
+                }`}
+              />
+            </button>
+          </div>
+
+          {/* 3. Why HindSEC Trigger */}
           <div
             ref={whyTriggerRef}
             className="relative"
@@ -520,7 +574,53 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 )}
               </div>
 
-              {/* Mobile Why Securio Accordion */}
+              {/* Mobile Compliance Services Accordion */}
+              <div>
+                <button
+                  onClick={() =>
+                    setMobileActiveAccordion(
+                      mobileActiveAccordion === "compliance" ? null : "compliance"
+                    )
+                  }
+                  className="flex items-center justify-between w-full py-2 text-white text-[17px] font-medium"
+                >
+                  <span className={isComplianceActive ? "text-blue-300 font-semibold" : ""}>
+                    Compliance Services
+                  </span>
+                  <ChevronDown
+                    className={`w-4 h-4 transition-transform ${
+                      mobileActiveAccordion === "compliance" ? "rotate-180" : ""
+                    }`}
+                  />
+                </button>
+                {mobileActiveAccordion === "compliance" && (
+                  <div className="py-2 space-y-2 border-l border-white/10 ml-2 pl-3 mt-1">
+                    <Link
+                      href="/compliance"
+                      className="flex items-center justify-between p-2.5 rounded-lg bg-white/[0.08] hover:bg-white/[0.14] text-white text-[14px] font-semibold transition-colors"
+                      onClick={() => setMobileMenuOpen(false)}
+                    >
+                      <span>Compliance Hub & Standards</span>
+                      <span>→</span>
+                    </Link>
+                    <div className="space-y-1 pt-1">
+                      {navContent.compliance.map((item) => (
+                        <Link
+                          key={item.title}
+                          href={item.href}
+                          className="block p-2 rounded-lg bg-white/[0.03] hover:bg-white/[0.08] transition-colors"
+                          onClick={() => setMobileMenuOpen(false)}
+                        >
+                          <div className="text-[13px] font-medium text-white">{item.title}</div>
+                          <div className="text-[11.5px] text-white/60 line-clamp-1">{item.description}</div>
+                        </Link>
+                      ))}
+                    </div>
+                  </div>
+                )}
+              </div>
+
+              {/* Mobile Why HindSEC Accordion */}
               <div>
                 <button
                   onClick={() =>
@@ -541,7 +641,7 @@ export default function Navbar({ theme }: NavbarProps = {}) {
                 </button>
                 {mobileActiveAccordion === "why" && (
                   <div className="py-2 space-y-2 border-l border-white/10 ml-2 pl-3 mt-1">
-                    {whySecurioMenuItems.map((item, idx) => (
+                    {whyHindSecMenuItems.map((item, idx) => (
                       <Link
                         key={idx}
                         href={item.href || `#${item.title.toLowerCase().replace(/\s+/g, "-")}`}

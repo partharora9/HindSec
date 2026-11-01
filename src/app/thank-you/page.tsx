@@ -3,10 +3,11 @@ import Navbar from "@/components/Navbar";
 import Footer from "@/components/sections/Footer";
 import SmoothScroll from "@/components/SmoothScroll";
 import ScrollProgressBar from "@/components/ScrollProgressBar";
+import { BRAND_NAME } from "@/content/siteContent";
 
 export const metadata: Metadata = {
-  title: "Thank You | Securio",
-  description: "Thank you for reaching out to Securio. Our security team will be in touch shortly.",
+  title: `Thank You | ${BRAND_NAME}`,
+  description: `Thank you for reaching out to ${BRAND_NAME}. Our security team will be in touch shortly.`,
 };
 
 export default function ThankYouPage() {

@@ -48,6 +48,14 @@ import {
   FileLock2,
   KeyRound,
   CheckCheck,
+  GraduationCap,
+  Mail,
+  MailWarning,
+  UserCheck,
+  Award,
+  Scale,
+  ClipboardCheck,
+  ShieldQuestion,
   HelpCircle,
   LucideProps,
 } from "lucide-react";
@@ -103,6 +111,14 @@ const iconMap: Record<string, React.ComponentType<LucideProps>> = {
   FileLock2,
   KeyRound,
   CheckCheck,
+  GraduationCap,
+  Mail,
+  MailWarning,
+  UserCheck,
+  Award,
+  Scale,
+  ClipboardCheck,
+  ShieldQuestion,
 };
 
 export default function ServiceIcon({ name, className = "w-5 h-5", ...props }: ServiceIconProps) {

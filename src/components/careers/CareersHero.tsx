@@ -176,7 +176,7 @@ export default function CareersHero() {
                 {!imgError ? (
                   <Image
                     src="/images/careers-hero.jpg"
-                    alt="Securio offensive security and penetration testing engineers collaborating"
+                    alt="HindSEC offensive security and penetration testing engineers collaborating"
                     fill
                     sizes="(max-width: 1024px) 100vw, 624px"
                     className="object-cover"
@@ -186,7 +186,7 @@ export default function CareersHero() {
                   />
                 ) : (
                   <div className="w-full h-full bg-gradient-to-br from-[#d4dee8] via-[#e2e9f0] to-[#ccd7e2] flex items-center justify-center text-[#4a4f5a] text-sm font-medium">
-                    Securio Team
+                    HindSEC Team
                   </div>
                 )}
               </motion.div>

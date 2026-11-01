@@ -1,4 +1,5 @@
 import type { Metadata } from "next";
+import { Suspense } from "react";
 import { notFound } from "next/navigation";
 import Navbar from "@/components/Navbar";
 import Footer from "@/components/sections/Footer";
@@ -16,6 +17,8 @@ import {
   getRelatedCategories,
 } from "@/data/services";
 import { BRAND_NAME, siteMetadata } from "@/content/siteContent";
+
+export const instant = false;
 
 interface PageProps {
   params: Promise<{ category: string }>;
@@ -61,7 +64,11 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
   };
 }
 
-export default async function ServiceCategoryPage({ params }: PageProps) {
+async function CategoryContent({
+  params,
+}: {
+  params: Promise<{ category: string }>;
+}) {
   const { category: slug } = await params;
   const category = getCategoryBySlug(slug);
 
@@ -110,16 +117,11 @@ export default async function ServiceCategoryPage({ params }: PageProps) {
   };
 
   return (
-    <main className="w-full bg-[#f0f1f3] text-[#0a0a0a] min-h-screen overflow-x-hidden font-sans">
+    <>
       <script
         type="application/ld+json"
         dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
       />
-      <SmoothScroll />
-      <ScrollProgressBar />
-
-      {/* Navigation */}
-      <Navbar theme="light" />
 
       {/* Hero Section with Breadcrumbs & Title */}
       <CategoryHero category={category} />
@@ -180,6 +182,29 @@ export default async function ServiceCategoryPage({ params }: PageProps) {
         secondaryButtonText={category.cta.secondaryButtonText}
         secondaryButtonHref={category.cta.secondaryButtonHref}
       />
+    </>
+  );
+}
+
+export default function ServiceCategoryPage({ params }: PageProps) {
+  return (
+    <main className="w-full bg-[#f0f1f3] text-[#0a0a0a] min-h-screen overflow-x-hidden font-sans">
+      <SmoothScroll />
+      <ScrollProgressBar />
+
+      {/* Navigation */}
+      <Navbar theme="light" />
+
+      {/* Dynamic Category Content inside Suspense */}
+      <Suspense
+        fallback={
+          <div className="w-full min-h-[60vh] flex items-center justify-center pt-[150px]">
+            <div className="w-8 h-8 rounded-full border-2 border-slate-300 border-t-blue-600 animate-spin" />
+          </div>
+        }
+      >
+        <CategoryContent params={params} />
+      </Suspense>
 
       {/* Site Footer */}
       <Footer />

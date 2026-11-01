@@ -308,7 +308,7 @@ export default function CyberDefenseProcessSection() {
                           </div>
                           <span className="text-blue-500">── TLS 1.3 ──►</span>
                           <div className="border border-emerald-400 bg-white p-1 rounded-[2px] shadow-sm font-bold text-slate-800">
-                            Securio Zero-Trust WAF
+                            HindSEC Zero-Trust WAF
                           </div>
                           <span className="text-blue-500">── IPS Filter ──►</span>
                           <div className="border border-indigo-400 bg-white p-1 rounded-[2px] shadow-sm font-bold text-slate-800">

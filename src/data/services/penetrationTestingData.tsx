@@ -205,7 +205,7 @@ export const penetrationTestingData: ServicePageData = {
     heading: "What Is Penetration Testing?",
     paragraphs: [
       "Penetration Testing is a controlled security assessment that simulates real attack methods to find vulnerabilities before they are exploited. It helps your team understand where risk exists, how serious each issue is, and what needs to be fixed first.",
-      "Securio tests applications, networks, cloud systems, and infrastructure with a clear focus on business impact. You get evidence-based findings, practical recommendations, and a better understanding of your real security posture.",
+      "HindSEC tests applications, networks, cloud systems, and infrastructure with a clear focus on business impact. You get evidence-based findings, practical recommendations, and a better understanding of your real security posture.",
     ],
     checklistLabel: "WITH PENETRATION TESTING, YOU CAN:",
     checklist: [
@@ -246,7 +246,7 @@ export const penetrationTestingData: ServicePageData = {
     ],
     photo: {
       src: "/images/security-expert.jpg",
-      alt: "Securio security engineers evaluating penetration test telemetry on laptop",
+      alt: "HindSEC security engineers evaluating penetration test telemetry on laptop",
       fallbackGradient: "bg-gradient-to-br from-[#1c2c4a] via-[#121c2e] to-[#0a101b]",
     },
   },

@@ -22,11 +22,11 @@ export const servicesMenuItems: MegaMenuItem[] = serviceCategories.slice(0, 3).m
   icon: <ServiceIcon name={cat.icon} className="w-[18px] h-[18px] text-white" />,
 }));
 
-export const whySecurioMenuItems: MegaMenuItem[] = [
+export const whyHindSecMenuItems: MegaMenuItem[] = [
   {
-    title: navContent.whySecurio[0].title,
-    description: navContent.whySecurio[0].description,
-    href: navContent.whySecurio[0].href,
+    title: navContent.whyHindSec[0].title,
+    description: navContent.whyHindSec[0].description,
+    href: navContent.whyHindSec[0].href,
     icon: (
       <svg
         className="w-[18px] h-[18px]"
@@ -45,9 +45,9 @@ export const whySecurioMenuItems: MegaMenuItem[] = [
     ),
   },
   {
-    title: navContent.whySecurio[1].title,
-    description: navContent.whySecurio[1].description,
-    href: navContent.whySecurio[1].href,
+    title: navContent.whyHindSec[1].title,
+    description: navContent.whyHindSec[1].description,
+    href: navContent.whyHindSec[1].href,
     icon: (
       <svg
         className="w-[18px] h-[18px]"
@@ -64,9 +64,9 @@ export const whySecurioMenuItems: MegaMenuItem[] = [
     ),
   },
   {
-    title: navContent.whySecurio[2].title,
-    description: navContent.whySecurio[2].description,
-    href: navContent.whySecurio[2].href,
+    title: navContent.whyHindSec[2].title,
+    description: navContent.whyHindSec[2].description,
+    href: navContent.whyHindSec[2].href,
     icon: (
       <svg
         className="w-[18px] h-[18px]"
@@ -87,7 +87,7 @@ export const whySecurioMenuItems: MegaMenuItem[] = [
 ];
 
 interface MegaDropdownProps {
-  type: "services" | "why";
+  type: "services" | "compliance" | "why";
   leftOffset: number;
   onMouseEnter: () => void;
   onMouseLeave: () => void;
@@ -104,7 +104,17 @@ export default function MegaDropdown({
   currentPath,
 }: MegaDropdownProps) {
   const isServices = type === "services";
-  const label = isServices ? navContent.servicesLabel : navContent.whyLabel;
+  const isCompliance = type === "compliance";
+  const label = isServices
+    ? navContent.servicesLabel
+    : isCompliance
+    ? navContent.complianceLabel
+    : navContent.whyLabel;
+
+  const totalModules = serviceCategories.reduce(
+    (acc, cat) => acc + cat.services.length,
+    0
+  );
 
   return (
     <motion.div
@@ -123,13 +133,15 @@ export default function MegaDropdown({
       className={`absolute top-[calc(100%+8px)] bg-white rounded-none shadow-[0_20px_50px_rgba(2,6,30,0.25)] border border-[#e2e4e8] z-50 pointer-events-auto select-none ${
         isServices
           ? "w-[960px] p-[20px] max-w-[calc(100vw-32px)]"
+          : isCompliance
+          ? "w-[880px] p-[20px] max-w-[calc(100vw-32px)]"
           : "w-[625px] h-[272px] p-[8px] flex"
       }`}
       role="menu"
       aria-label={`${label} menu`}
     >
       {isServices ? (
-        /* ================= SERVICES MEGA-MENU (6 Categories + Sub-services) ================= */
+        /* ================= SERVICES MEGA-MENU (Categories + Sub-services) ================= */
         <div className="w-full flex flex-col">
           {/* Header Row */}
           <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-[#e2e4e8]">
@@ -138,7 +150,7 @@ export default function MegaDropdown({
                 Service Categories & Capabilities
               </span>
               <span className="text-[11px] bg-[#f0f1f3] text-[#0a0a0a] px-2 py-0.5 font-medium">
-                6 Categories • 48 Modules
+                {serviceCategories.length} Categories • {totalModules} Modules
               </span>
             </div>
             <Link
@@ -151,8 +163,8 @@ export default function MegaDropdown({
             </Link>
           </div>
 
-          {/* 3 Columns x 2 Rows Grid of 6 Categories */}
-          <div className="grid grid-cols-3 gap-x-6 gap-y-5">
+          {/* 3 Columns Grid of Categories */}
+          <div className="grid grid-cols-3 gap-x-6 gap-y-5 max-h-[64vh] overflow-y-auto pr-1">
             {serviceCategories.map((category) => {
               const isCategoryActive = currentPath === `/services/${category.slug}`;
 
@@ -207,7 +219,7 @@ export default function MegaDropdown({
 
           {/* Footer Bar */}
           <div className="mt-4 pt-3 border-t border-[#f0f1f3] flex items-center justify-between text-[12px] text-[#4a4f5a]">
-            <span>Need dedicated architecture or private cloud LLM deployment?</span>
+            <span>Need full scope VAPT, AI red teaming, or employee phishing simulation?</span>
             <Link
               href="/contact"
               onClick={onClose}
@@ -217,8 +229,71 @@ export default function MegaDropdown({
             </Link>
           </div>
         </div>
+      ) : isCompliance ? (
+        /* ================= COMPLIANCE SERVICES MEGA-MENU ================= */
+        <div className="w-full flex flex-col">
+          {/* Header Row */}
+          <div className="flex items-center justify-between pb-3.5 mb-4 border-b border-[#e2e4e8]">
+            <div className="flex items-center gap-2.5">
+              <span className="text-[12px] uppercase tracking-[0.05em] text-[#4a4f5a] font-semibold">
+                VAPT Compliance & Regulatory Frameworks
+              </span>
+              <span className="text-[11px] bg-[#dcfce7] text-[#15803d] px-2 py-0.5 font-semibold">
+                8 Standards • Audit-Ready Attestation
+              </span>
+            </div>
+            <Link
+              href="/compliance"
+              onClick={onClose}
+              className="text-[13px] font-semibold text-[#0a0a0a] hover:text-blue-700 transition-colors flex items-center gap-1.5 focus:outline-none focus-visible:ring-1 focus-visible:ring-black"
+            >
+              <span>Explore Compliance Hub</span>
+              <span aria-hidden="true">→</span>
+            </Link>
+          </div>
+
+          {/* 2 Columns x 4 Rows Frameworks Grid */}
+          <div className="grid grid-cols-2 gap-x-6 gap-y-3.5">
+            {navContent.compliance.map((item) => (
+              <Link
+                key={item.title}
+                href={item.href}
+                onClick={onClose}
+                className="flex items-start gap-3 p-2 rounded-sm hover:bg-[#f0f1f3] transition-colors group focus:outline-none focus-visible:ring-1 focus-visible:ring-black"
+                role="menuitem"
+              >
+                <div className="w-[30px] h-[30px] bg-[#0a0a0a] group-hover:bg-[#1a2b49] rounded-none flex items-center justify-center flex-shrink-0 text-white mt-0.5 transition-colors">
+                  <svg className="w-4 h-4 fill-none stroke-current" strokeWidth="2" viewBox="0 0 24 24">
+                    <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
+                    <path d="m9 12 2 2 4-4" />
+                  </svg>
+                </div>
+                <div className="flex-1 min-w-0">
+                  <div className="text-[13.5px] font-semibold text-[#0a0a0a] group-hover:text-blue-700 leading-tight">
+                    {item.title}
+                  </div>
+                  <div className="text-[12px] text-[#64748b] mt-0.5 leading-snug line-clamp-1">
+                    {item.description}
+                  </div>
+                </div>
+              </Link>
+            ))}
+          </div>
+
+          {/* Footer Bar */}
+          <div className="mt-4 pt-3 border-t border-[#f0f1f3] flex items-center justify-between text-[12px] text-[#4a4f5a]">
+            <span>Preparing for an external audit, SOC 2 certification, or CERT-In review?</span>
+            <Link
+              href="/contact?service=compliance"
+              onClick={onClose}
+              className="font-semibold text-[#0a0a0a] hover:text-black transition-colors focus:outline-none focus-visible:underline"
+            >
+              Request Compliance Audit Scope →
+            </Link>
+          </div>
+        </div>
       ) : (
-        /* ================= WHY SECURIO MENU (Existing Layout) ================= */
+        /* ================= WHY HINDSEC MENU ================= */
         <>
           {/* LEFT COLUMN: Section Label & 3 Item Rows */}
           <div className="w-[352px] h-full flex flex-col justify-between overflow-hidden">
@@ -236,7 +311,7 @@ export default function MegaDropdown({
                 </div>
 
                 <div className="flex-1 flex flex-col justify-between">
-                  {whySecurioMenuItems.map((item, idx) => (
+                  {whyHindSecMenuItems.map((item) => (
                     <Link
                       key={item.title}
                       href={item.href || `#${item.title.toLowerCase().replace(/\s+/g, "-")}`}

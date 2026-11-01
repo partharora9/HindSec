@@ -150,7 +150,7 @@ export default function ContactSection() {
             >
               <Image
                 src="/images/contact-team.jpg"
-                alt="Securio security consultants planning VAPT scope"
+                alt="HindSEC security consultants planning VAPT scope"
                 fill
                 unoptimized
                 sizes="(max-width: 1024px) 100vw, 608px"

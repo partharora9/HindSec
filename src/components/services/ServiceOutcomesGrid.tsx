@@ -4,6 +4,7 @@ import React, { useState, useRef } from "react";
 import { motion, useInView } from "framer-motion";
 import { useSafeReducedMotion } from "@/hooks/useSafeReducedMotion";
 import { ServiceOutcomeItem } from "@/types/service";
+import { BRAND_NAME } from "@/content/siteContent";
 
 interface ServiceOutcomesGridProps {
   outcomes: ServiceOutcomeItem[];
@@ -92,7 +93,7 @@ export default function ServiceOutcomesGrid({ outcomes }: ServiceOutcomesGridPro
           transition={{ duration: prefersReduced ? 0 : 0.6, ease: "easeOut" }}
           className="text-[15px] font-normal uppercase tracking-[0.03em] text-[#0a0a0a]"
         >
-          SECURIO SOLUTION SUITE
+          {BRAND_NAME.toUpperCase()} SOLUTION SUITE
         </motion.div>
 
         {/* Section heading: 48px, weight 400, line-height 1.22, letter-spacing -1px, 40px below label */}

@@ -1,6 +1,6 @@
 /**
  * ============================================================================
- * SECURIO VAPT - CENTRAL SITE CONTENT FILE
+ * HINDSEC VAPT - CENTRAL SITE CONTENT FILE
  * ============================================================================
  * 
  * PLACEHOLDER LIST (Replace with real data before production launch):
@@ -21,15 +21,15 @@
  * - Prominently affirms that all testing requires written authorization and signed scope.
  */
 
-export const BRAND_NAME = "Securio";
+export const BRAND_NAME = "HindSEC";
 
 export const siteMetadata = {
   brandName: BRAND_NAME,
-  siteUrl: "https://securio.com", // PLACEHOLDER: replace with production domain
-  defaultTitle: `VAPT Services | Vulnerability Assessment & Penetration Testing | ${BRAND_NAME}`,
+  siteUrl: "https://hindsec.com", // Official domain
+  defaultTitle: `VAPT Services | Vulnerability Assessment, Pentest & AI Security | ${BRAND_NAME}`,
   titleTemplate: `%s | ${BRAND_NAME}`,
   defaultDescription:
-    "Professional Vulnerability Assessment and Penetration Testing (VAPT) services. Identify security weaknesses, safely validate exploitability, and receive actionable remediation guidance with free retesting.",
+    "Professional Vulnerability Assessment, Penetration Testing (VAPT), AI & LLM Security Assessment, Employee Phishing Simulation, and Compliance Audits with free verification retesting.",
   keywords: [
     "VAPT services",
     "vulnerability assessment",
@@ -38,6 +38,14 @@ export const siteMetadata = {
     "API security testing",
     "network pentest",
     "cloud security assessment",
+    "AI security assessment",
+    "LLM security",
+    "phishing simulation",
+    "security awareness training",
+    "ISO 27001 VAPT",
+    "SOC 2 penetration testing",
+    "PCI DSS compliance audit",
+    "CERT-In audit",
     "OWASP Top 10",
     "CVSS scoring",
     "compliance security audit",
@@ -47,28 +55,77 @@ export const siteMetadata = {
 export const navContent = {
   brandText: BRAND_NAME,
   servicesLabel: "SERVICES",
+  complianceLabel: "COMPLIANCE SERVICES",
   whyLabel: `WHY ${BRAND_NAME.toUpperCase()}`,
   services: [
     {
-      title: "Vulnerability Assessment",
-      description: "Find and rank weaknesses across your assets",
-      href: "/services/vulnerability-assessment",
-      iconType: "scan-magnifier" as const,
-    },
-    {
-      title: "Penetration Testing",
-      description: "Safely exploit flaws to prove real risk",
-      href: "/services/penetration-testing",
+      title: "VAPT Services",
+      description: "Find and safely exploit flaws across all assets",
+      href: "/services/vapt-services",
       iconType: "check-magnifier" as const,
     },
     {
-      title: "Application & API Security",
-      description: "Test web, mobile, and API security in depth",
-      href: "/services/application-security",
+      title: "AI & LLM Security",
+      description: "Adversarial testing for models, prompts & agents",
+      href: "/services/ai-llm-security-assessment",
+      iconType: "scan-magnifier" as const,
+    },
+    {
+      title: "Cyber Training & Phishing",
+      description: "On-demand employee awareness & simulated attacks",
+      href: "/services/security-awareness-training",
+      iconType: "award" as const,
+    },
+    {
+      title: "VAPT Compliance Audits",
+      description: "ISO 27001, SOC 2, PCI-DSS, CERT-In & HIPAA audits",
+      href: "/compliance",
       iconType: "browser-window" as const,
     },
   ],
-  whySecurio: [
+  compliance: [
+    {
+      title: "ISO 27001:2022 Technical Audit",
+      description: "Annex A.8 controls verification & penetration testing",
+      href: "/services/vapt-compliance-services#iso-27001-vapt-audit",
+    },
+    {
+      title: "SOC 2 Type I & II VAPT",
+      description: "Trust Services Criteria technical readiness testing",
+      href: "/services/vapt-compliance-services#soc2-type-2-penetration-testing",
+    },
+    {
+      title: "PCI-DSS 4.0 Requirement 11",
+      description: "Internal, external & segmentation penetration testing",
+      href: "/services/vapt-compliance-services#pci-dss-penetration-testing",
+    },
+    {
+      title: "CERT-In Empanelled Audits",
+      description: "Government mandate & critical infrastructure compliance",
+      href: "/services/vapt-compliance-services#cert-in-security-auditing",
+    },
+    {
+      title: "HIPAA Security Rule Pentest",
+      description: "ePHI protection & technical safeguard assessments",
+      href: "/services/vapt-compliance-services#hipaa-technical-safeguards-audit",
+    },
+    {
+      title: "RBI / SEBI Cyber Framework",
+      description: "Mandatory BFSI regulatory audits & API pentesting",
+      href: "/services/vapt-compliance-services#rbi-sebi-irdai-cyber-framework",
+    },
+    {
+      title: "DPDP Act 2023 & GDPR Audit",
+      description: "Technical data privacy & PII leakage protection",
+      href: "/services/vapt-compliance-services#dpdp-gdpr-privacy-security-testing",
+    },
+    {
+      title: "NIST CSF & CIS Benchmarks",
+      description: "SP 800-115 framework mapping & baseline configuration",
+      href: "/services/vapt-compliance-services#nist-csf-cis-benchmark-assessment",
+    },
+  ],
+  whyHindSec: [
     {
       title: "About",
       description: "Our mission, values, and approach",
@@ -100,7 +157,7 @@ export const navContent = {
     subtitle: "Scope your VAPT engagement",
     href: "/contact",
     imageSrc: "/images/security-expert.jpg",
-    imageAlt: "Securio security experts reviewing VAPT scoping requirements",
+    imageAlt: "HindSEC security experts reviewing VAPT scoping requirements",
   },
 };
 
@@ -130,7 +187,7 @@ export const marqueeContent = {
 };
 
 export interface Card1Data {
-  id: "vulnerability-assessment";
+  id: "vulnerability-assessment" | "vapt-services";
   title: string;
   caption: string;
   href: string;
@@ -145,7 +202,7 @@ export interface Card1Data {
 }
 
 export interface Card2Data {
-  id: "penetration-testing";
+  id: "penetration-testing" | "ai-security-services";
   title: string;
   caption: string;
   href: string;
@@ -161,7 +218,7 @@ export interface Card2Data {
 }
 
 export interface Card3Data {
-  id: "application-security";
+  id: "application-security" | "security-awareness-training";
   title: string;
   caption: string;
   href: string;
@@ -172,58 +229,88 @@ export interface Card3Data {
   };
 }
 
+export interface Card4Data {
+  id: "vapt-compliance";
+  title: string;
+  caption: string;
+  href: string;
+  gradient: string;
+  panel: {
+    title: string;
+    frameworks: { name: string; status: string; tag: string }[];
+  };
+}
+
+export type HomeSecurityCard = Card1Data | Card2Data | Card3Data | Card4Data;
+
 export const homeSecurityServices = {
-  label: "SECURITY SERVICES",
+  label: "SECURITY SERVICES & CAPABILITIES",
   headingLine1: "Every vulnerability found.",
-  headingLine2: "Every fix verified.",
+  headingLine2: "Every defense validated.",
   cards: [
     {
-      id: "vulnerability-assessment" as const,
-      title: "Vulnerability Assessment",
-      caption: "Know every weakness before it is exploited.",
-      href: "/services/vulnerability-assessment",
+      id: "vapt-services" as const,
+      title: "VAPT & Penetration Testing",
+      caption: "Exploit validation across web apps, networks, APIs, and cloud perimeters.",
+      href: "/services/vapt-services",
       gradient: "linear-gradient(135deg, #d9f1ff 0%, #8ccbff 35%, #4a7cf0 70%, #2c4fc4 100%)",
       panel: {
         step1: "Asset discovered",
-        step2: { label: "Scan", chip: "Complete" },
-        step3: { label: "Triage", chip: "Ranked" },
-        step4: { chip: "Validated", label: "Human review" },
-        step5: { label: "Reported", chip: "Delivered" },
+        step2: { label: "Deep Scan", chip: "Complete" },
+        step3: { label: "Triage & Exploit", chip: "Ranked" },
+        step4: { chip: "Validated", label: "Manual verify" },
+        step5: { label: "Report & Retest", chip: "Certified" },
       },
     },
     {
-      id: "penetration-testing" as const,
-      title: "Penetration Testing",
-      caption: "See how an attacker would really get in.",
-      href: "/services/penetration-testing",
+      id: "ai-security-services" as const,
+      title: "AI & LLM Security Assessment",
+      caption: "Offensive adversarial red teaming for LLMs, prompt injection & AI agents.",
+      href: "/services/ai-llm-security-assessment",
       gradient: "linear-gradient(135deg, #5aa0f8 0%, #2f5be0 40%, #0b1a66 75%, #040a2c 100%)",
       panel: {
-        title: "Pentest Report",
-        score: "Risk score: 8.1 / 10 (High)",
-        progress: "81%",
-        row1: "Entry point found",
-        row2: "Exploit validated",
-        row3: "Fix retested",
+        title: "AI Red Teaming Telemetry",
+        score: "Defense Score: 94.2% (Resilient)",
+        progress: "94%",
+        row1: "Prompt injection intercepted",
+        row2: "RAG data exfiltration blocked",
+        row3: "Agent guardrail certified",
       },
     },
     {
-      id: "application-security" as const,
-      title: "Application & API Security",
-      caption: "Secure every endpoint, form, and token.",
-      href: "/services/application-security",
+      id: "security-awareness-training" as const,
+      title: "Cyber Training & Phishing Simulation",
+      caption: "On-demand interactive employee awareness drills & simulated phishing attacks.",
+      href: "/services/security-awareness-training",
       gradient: "linear-gradient(135deg, #2a4fc0 0%, #152c80 30%, #02030f 75%, #000108 100%)",
       panel: {
-        title: "App & API Testing",
+        title: "On-Demand Training & Drills",
         tests: [
-          "Authentication tests",
-          "Access control tests",
-          "Injection testing",
-          "API abuse testing",
-          "Business logic tests",
+          "Spear-phishing simulations",
+          "On-demand employee modules",
+          "Credential harvesting drills",
+          "Quishing (QR code) testing",
+          "Employee risk scoring & heatmaps",
         ],
       },
     },
-  ] as [Card1Data, Card2Data, Card3Data],
+    {
+      id: "vapt-compliance" as const,
+      title: "VAPT Compliance & Audits",
+      caption: "Audit-ready testing for ISO 27001, SOC 2, PCI-DSS, CERT-In, HIPAA & RBI.",
+      href: "/compliance",
+      gradient: "linear-gradient(135deg, #1e3a8a 0%, #0f172a 45%, #020617 80%, #000108 100%)",
+      panel: {
+        title: "Compliance Readiness",
+        frameworks: [
+          { name: "ISO 27001:2022", status: "Audit-Ready", tag: "ISMS A.8" },
+          { name: "SOC 2 Type II", status: "Verified", tag: "TSC Security" },
+          { name: "PCI-DSS 4.0", status: "Compliant", tag: "Req 11.3" },
+          { name: "CERT-In Audit", status: "Attested", tag: "National" },
+        ],
+      },
+    },
+  ] as [Card1Data, Card2Data, Card3Data, Card4Data],
 };
 
 export const testimonialContent = {
@@ -707,7 +794,7 @@ export const aboutContent = {
     heading: "A VAPT partner built for teams\nthat want proof, not just alerts.",
     photo: {
       src: "/images/about-team.jpg",
-      alt: "Securio security testing team collaborating on vulnerability analysis",
+      alt: "HindSEC security testing team collaborating on vulnerability analysis",
     },
   },
   values: {
@@ -873,9 +960,9 @@ export const certificationsContent = {
 };
 
 export const contactInfo = {
-  email: "hello@securio.com", // PLACEHOLDER: replace with real business email
-  phone: "+1 (123) 456-7890", // PLACEHOLDER: replace with real business phone
-  address: "456 Business Ave, New York, NY 10001", // PLACEHOLDER: replace with real office address
+  email: "hello@hindsec.com", // Official business email
+  phone: "+1 (123) 456-7890", // Scoping consultation phone
+  address: "456 Business Ave, New York, NY 10001", // Headquarters
   addressMapUrl: "https://www.google.com/maps/search/?api=1&query=456+Business+Ave,+New+York,+NY+10001",
   socials: [
     {
@@ -910,6 +997,9 @@ export const contactPageContent = {
       va: "I am interested in: Vulnerability Assessment",
       pentest: "I am interested in: Penetration Testing",
       appsec: "I am interested in: Application & API Security",
+      ai: "I am interested in: AI & LLM Security Assessment",
+      training: "I am interested in: Cybersecurity Awareness Training & Phishing Simulation",
+      compliance: "I am interested in: VAPT Compliance Services (ISO 27001, SOC 2, PCI-DSS, CERT-In, HIPAA)",
     } as Record<string, string>,
   },
 };
@@ -922,12 +1012,21 @@ export const footerContent = {
   columns: {
     servicesTitle: "Services",
     services: [
-      { title: "AI Security Product Development", href: "/services/ai-security-products" },
-      { title: "Custom LLM Development & Fine-Tuning", href: "/services/custom-llm-development" },
-      { title: "Enterprise AI & Knowledge Assistants", href: "/services/enterprise-ai-knowledge-assistants" },
-      { title: "AI Agents & Business Automation", href: "/services/ai-agents-automation" },
-      { title: "AI Infrastructure & MLOps", href: "/services/ai-infrastructure-mlops" },
+      { title: "VAPT Services", href: "/services/vapt-services" },
       { title: "AI & LLM Security Assessment", href: "/services/ai-llm-security-assessment" },
+      { title: "Cybersecurity Training & Phishing", href: "/services/security-awareness-training" },
+      { title: "AI Security Product Development", href: "/services/ai-security-products" },
+      { title: "Custom LLM Development", href: "/services/custom-llm-development" },
+      { title: "Enterprise AI Knowledge Assistants", href: "/services/enterprise-ai-knowledge-assistants" },
+    ],
+    complianceTitle: "Compliance Services",
+    compliance: [
+      { title: "ISO 27001 ISMS Audit", href: "/services/vapt-compliance-services#iso-27001-vapt-audit" },
+      { title: "SOC 2 Type II VAPT", href: "/services/vapt-compliance-services#soc2-type-2-penetration-testing" },
+      { title: "PCI-DSS 4.0 Testing", href: "/services/vapt-compliance-services#pci-dss-penetration-testing" },
+      { title: "CERT-In Security Audit", href: "/services/vapt-compliance-services#cert-in-security-auditing" },
+      { title: "HIPAA Security Rule", href: "/services/vapt-compliance-services#hipaa-technical-safeguards-audit" },
+      { title: "RBI / SEBI Cyber Audit", href: "/services/vapt-compliance-services#rbi-sebi-irdai-cyber-framework" },
     ],
     companyTitle: "Company",
     company: [
@@ -952,7 +1051,7 @@ export const legalContent = {
     heading: "Privacy Policy",
     lastUpdated: "October 2026",
     intro:
-      "Securio is committed to protecting the privacy and confidentiality of our clients and site visitors. This website is cookie-free and does not track personal browsing habits.",
+      "HindSEC is committed to protecting the privacy and confidentiality of our clients and site visitors. This website is cookie-free and does not track personal browsing habits.",
     sections: [
       {
         title: "Information We Collect",
@@ -976,7 +1075,7 @@ export const legalContent = {
     heading: "Terms of Service",
     lastUpdated: "October 2026",
     intro:
-      "These Terms of Service govern the use of the Securio website and establish the foundational terms for all security assessment engagements.",
+      "These Terms of Service govern the use of the HindSEC website and establish the foundational terms for all security assessment engagements.",
     sections: [
       {
         title: "Authorized Testing Requirement",
@@ -991,7 +1090,7 @@ export const legalContent = {
       {
         title: "Limitation of Liability",
         content:
-          "Security assessments represent a point-in-time review of target environments based on agreed testing methodologies. Securio provides detailed remediation guidance but does not guarantee the complete absence of undiscovered vulnerabilities.",
+          "Security assessments represent a point-in-time review of target environments based on agreed testing methodologies. HindSEC provides detailed remediation guidance but does not guarantee the complete absence of undiscovered vulnerabilities.",
       },
     ],
   },

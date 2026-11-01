@@ -43,6 +43,396 @@ export interface ServiceCategory {
 
 export const serviceCategories: ServiceCategory[] = [
   {
+    slug: "vapt-services",
+    title: "Vulnerability Assessment & Penetration Testing (VAPT)",
+    tagline: "Manual and automated offensive security assessments discovering exploitable weaknesses before attackers do.",
+    summary:
+      "Our certified offensive security experts simulate sophisticated real-world cyberattacks across your web applications, APIs, cloud environments, and internal networks, delivering proof-of-exploit evidence and free verification retesting.",
+    icon: "ShieldAlert",
+    services: [
+      {
+        slug: "web-application-penetration-testing",
+        title: "Web Application Penetration Testing",
+        shortDescription:
+          "Deep manual and automated testing aligned with OWASP Top 10 to uncover SQL injection, broken authentication, IDOR, and business logic flaws.",
+        icon: "FileCode",
+      },
+      {
+        slug: "mobile-application-security-testing",
+        title: "Mobile App Security Testing (iOS & Android)",
+        shortDescription:
+          "Static and dynamic testing (SAST/DAST) adhering to OWASP MASVS for hardcoded keys, insecure data storage, jailbreak bypass, and IPC risks.",
+        icon: "Layers",
+      },
+      {
+        slug: "api-microservices-security-testing",
+        title: "API & Microservices Security Testing",
+        shortDescription:
+          "Rigorous assessment of REST, GraphQL, and gRPC endpoints for BOLA, broken authorization, mass assignment, and rate-limiting bypasses.",
+        icon: "Cable",
+      },
+      {
+        slug: "network-infrastructure-penetration-testing",
+        title: "Network Infrastructure Pentest",
+        shortDescription:
+          "Internal and external network security auditing, firewall configuration checks, unpatched service exploitation, and privilege escalation tests.",
+        icon: "Network",
+      },
+      {
+        slug: "cloud-security-configuration-review",
+        title: "Cloud Infrastructure & Container Security",
+        shortDescription:
+          "Evaluate AWS, Azure, and GCP architectures, IAM permissions, Kubernetes clusters, and storage buckets for lateral movement paths and misconfigurations.",
+        icon: "Cloud",
+      },
+      {
+        slug: "red-teaming-adversary-simulation",
+        title: "Red Teaming & Adversary Simulation",
+        shortDescription:
+          "Full-scope cyberattack simulations testing your detection and response capabilities against MITRE ATT&CK tactics, techniques, and procedures.",
+        icon: "Radar",
+      },
+      {
+        slug: "devsecops-source-code-review",
+        title: "DevSecOps & Secure Code Review",
+        shortDescription:
+          "Manual line-by-line secure code audits and automated SAST integration to eliminate security vulnerabilities directly in your CI/CD pipelines.",
+        icon: "Code2",
+      },
+      {
+        slug: "iot-wireless-penetration-testing",
+        title: "IoT & Wireless Penetration Testing",
+        shortDescription:
+          "Assess wireless rogue access points, WPA enterprise setups, firmware vulnerabilities, and hardware interface attack vectors.",
+        icon: "HardDrive",
+      },
+    ],
+    whoItIsFor: {
+      heading: "Who It's For",
+      audiences: [
+        {
+          title: "SaaS & Software Product Companies",
+          description:
+            "Development and product teams needing rigorous security validation and penetration testing reports before releasing to enterprise customers.",
+        },
+        {
+          title: "Financial Institutions & Fintechs",
+          description:
+            "Banking, insurance, and fintech firms required to conduct periodic third-party VAPT audits to satisfy strict regulatory requirements.",
+        },
+        {
+          title: "Enterprises with Complex Hybrid Infrastructure",
+          description:
+            "Organizations operating multi-cloud or hybrid environments seeking to identify perimeter blind spots, unpatched services, and lateral movement vectors.",
+        },
+      ],
+    },
+    howWeWork: {
+      heading: "How We Work",
+      steps: [
+        {
+          number: 1,
+          title: "Scoping & Threat Modeling",
+          description:
+            "We define assessment boundaries, establish rules of engagement, obtain signed authorization, and map target architecture to prioritize high-risk assets.",
+        },
+        {
+          number: 2,
+          title: "Reconnaissance & Vulnerability Discovery",
+          description:
+            "Our team utilizes commercial scanners and custom reconnaissance scripts to enumerate live attack surfaces, open ports, and obsolete software components.",
+        },
+        {
+          number: 3,
+          title: "Manual Exploitation & Privilege Escalation",
+          description:
+            "Offensive security engineers safely exploit validated flaws to establish proof-of-concept, test business logic vulnerabilities, and rule out false positives.",
+        },
+        {
+          number: 4,
+          title: "Executive & Technical Reporting",
+          description:
+            "We provide an executive risk summary alongside CVSS-scored technical findings with step-by-step reproduction steps and code-level remediation advice.",
+        },
+        {
+          number: 5,
+          title: "Free Retesting & Verification Letter",
+          description:
+            "After your engineering team deploys the fixes, we conduct a free verification retest and issue a finalized clean VAPT certificate.",
+        },
+      ],
+    },
+    cta: {
+      title: "Schedule Your Comprehensive VAPT Engagement",
+      description:
+        "Speak with a certified penetration tester to define your target scope, receive a fixed-price quote, and uncover critical vulnerabilities safely.",
+      primaryButtonText: "Request Scoping Call",
+      primaryButtonHref: "/contact?service=vapt",
+      secondaryButtonText: "Explore All Services",
+      secondaryButtonHref: "/services",
+    },
+  },
+  {
+    slug: "security-awareness-training",
+    title: "Cybersecurity Training & Phishing Simulation",
+    tagline: "On-demand employee cyber defense training and automated realistic phishing simulations.",
+    summary:
+      "Transform your employees from a vulnerability into your strongest defense layer through interactive on-demand training modules, automated simulated phishing attacks, and quantifiable human risk analytics.",
+    icon: "BookOpenCheck",
+    services: [
+      {
+        slug: "on-demand-employee-cyber-training",
+        title: "On-Demand Employee Cyber Awareness Training",
+        shortDescription:
+          "Self-paced, engaging video training modules and interactive knowledge checks covering password security, social engineering, and safe browsing.",
+        icon: "BookOpen",
+      },
+      {
+        slug: "automated-phishing-simulations",
+        title: "Automated Phishing & Spear-Phishing Simulations",
+        shortDescription:
+          "Realistic, scheduled email phishing scenarios mimicking real-world threat actors with customizable lures, urgency triggers, and landing pages.",
+        icon: "SearchCheck",
+      },
+      {
+        slug: "credential-harvesting-quishing-simulations",
+        title: "Credential Harvesting & Quishing (QR Code) Drills",
+        shortDescription:
+          "Simulated spoofed login portals and QR code attack vectors to gauge employee susceptibility to credential theft and mobile redirection.",
+        icon: "KeyRound",
+      },
+      {
+        slug: "smishing-vishing-social-engineering",
+        title: "Smishing & Vishing Social Engineering Testing",
+        shortDescription:
+          "Multi-channel social engineering exercises simulating SMS phishing and voice pretexting calls targeting high-value departments.",
+        icon: "MessageSquare",
+      },
+      {
+        slug: "ransomware-defense-training",
+        title: "Ransomware & Malicious Attachment Defense",
+        shortDescription:
+          "Specialized education instructing personnel on spotting suspicious macro-enabled documents, malicious links, and zero-day payload vectors.",
+        icon: "ShieldAlert",
+      },
+      {
+        slug: "role-based-executive-developer-training",
+        title: "Role-Based Executive & Developer Training",
+        shortDescription:
+          "Tailored curricula for C-level leadership (BEC/whale phishing), finance staff (wire fraud), and engineers (OWASP secure coding hygiene).",
+        icon: "Building2",
+      },
+      {
+        slug: "gamified-micro-learning",
+        title: "Gamified Cyber Hygiene & Micro-Lessons",
+        shortDescription:
+          "Bite-sized 3-minute interactive challenges, departmental leaderboards, and instant achievement badges that drive genuine behavioral change.",
+        icon: "Zap",
+      },
+      {
+        slug: "employee-risk-scoring-analytics",
+        title: "Employee Security Risk Scoring & Analytics",
+        shortDescription:
+          "Comprehensive telemetry dashboards tracking click-through rates, reporting speeds, repeat clickers, and compliance progression over time.",
+        icon: "FileBarChart",
+      },
+    ],
+    whoItIsFor: {
+      heading: "Who It's For",
+      audiences: [
+        {
+          title: "Corporate HR & People Operations",
+          description:
+            "Teams seeking seamless, on-demand onboarding modules and annual cybersecurity refresher courses that keep employees engaged and compliant.",
+        },
+        {
+          title: "CISOs & Security Operations Teams",
+          description:
+            "Security leaders looking to decrease phishing click rates, encourage swift incident reporting, and measure cultural resilience over time.",
+        },
+        {
+          title: "Regulated Healthcare & Finance Organizations",
+          description:
+            "Entities mandated by HIPAA, PCI-DSS, or ISO 27001 to demonstrate regular, documented staff security awareness training and phishing resilience.",
+        },
+      ],
+    },
+    howWeWork: {
+      heading: "How We Work",
+      steps: [
+        {
+          number: 1,
+          title: "Baseline Phishing Assessment",
+          description:
+            "We execute a benign baseline phishing campaign across your organization to measure initial failure rates and identify vulnerable business units.",
+        },
+        {
+          number: 2,
+          title: "Custom Curriculum Design",
+          description:
+            "We tailor educational modules and phishing templates to reflect your actual technology stack, company branding, and industry threat profiles.",
+        },
+        {
+          number: 3,
+          title: "Continuous Automated Simulations",
+          description:
+            "Employees receive periodic, randomized simulated attacks across email, SMS, and voice channels to maintain heightened threat awareness.",
+        },
+        {
+          number: 4,
+          title: "Just-In-Time Remediation",
+          description:
+            "Users who click simulated lures are instantly guided through a 60-second micro-lesson explaining the exact red flags they missed.",
+        },
+        {
+          number: 5,
+          title: "Executive Telemetry & Compliance Reporting",
+          description:
+            "We deliver audit-ready reports illustrating vulnerability reductions, reporting trends, and training completion records for auditors.",
+        },
+      ],
+    },
+    cta: {
+      title: "Build a Cyber-Resilient Workforce",
+      description:
+        "Launch an on-demand cybersecurity training and phishing simulation pilot today to protect your organization from social engineering.",
+      primaryButtonText: "Start Phishing Simulation",
+      primaryButtonHref: "/contact?service=training-phishing",
+      secondaryButtonText: "Explore All Services",
+      secondaryButtonHref: "/services",
+    },
+  },
+  {
+    slug: "vapt-compliance-services",
+    title: "VAPT Compliance & Regulatory Audits",
+    tagline: "Audit-ready vulnerability assessment and penetration testing mapped to global compliance frameworks.",
+    summary:
+      "Accelerate your certification audits and satisfy regulatory mandates with rigorous VAPT testing mapped directly to ISO 27001, SOC 2 Type II, PCI-DSS 4.0, CERT-In, HIPAA, RBI, SEBI, and DPDP Act requirements.",
+    icon: "FileCheck2",
+    services: [
+      {
+        slug: "iso-27001-vapt-audit",
+        title: "ISO/IEC 27001:2022 Technical Controls VAPT",
+        shortDescription:
+          "Fulfill Annex A.8 technical control requirements with rigorous external/internal penetration testing and vulnerability management audits.",
+        icon: "ShieldCheck",
+      },
+      {
+        slug: "soc2-type-2-penetration-testing",
+        title: "SOC 2 Type I & II Technical Readiness VAPT",
+        shortDescription:
+          "Independent third-party penetration testing and gap assessment satisfying the Trust Services Criteria for security, confidentiality, and availability.",
+        icon: "CheckCheck",
+      },
+      {
+        slug: "pci-dss-penetration-testing",
+        title: "PCI-DSS 4.0 Requirement 11 Penetration Testing",
+        shortDescription:
+          "Mandatory internal and external network pentesting, segmentation checks, and application assessments for cardholder data environments (CDE).",
+        icon: "FileLock2",
+      },
+      {
+        slug: "cert-in-security-auditing",
+        title: "CERT-In Empanelled Security Audits",
+        shortDescription:
+          "Comprehensive cybersecurity auditing for government ministries, critical infrastructure, and Indian regulated entities with CERT-In attestation.",
+        icon: "Building2",
+      },
+      {
+        slug: "hipaa-technical-safeguards-audit",
+        title: "HIPAA Security Rule & ePHI Technical Safeguards",
+        shortDescription:
+          "Assess healthcare software, electronic health records (EHR), and patient portals to prevent electronic protected health information breaches.",
+        icon: "Activity",
+      },
+      {
+        slug: "rbi-sebi-irdai-cyber-framework",
+        title: "RBI / SEBI / IRDAI Cyber Security Framework Audits",
+        shortDescription:
+          "Specialized penetration testing and cyber resilience audits mandated for banks, NBFCs, stockbrokers, and insurance platforms.",
+        icon: "Sliders",
+      },
+      {
+        slug: "dpdp-gdpr-privacy-security-testing",
+        title: "DPDP Act 2023 & GDPR Technical Privacy Pentest",
+        shortDescription:
+          "Validate technical controls protecting personal data, testing consent mechanics, data masking, encryption at rest, and PII leakage.",
+        icon: "EyeOff",
+      },
+      {
+        slug: "nist-csf-cis-benchmark-assessment",
+        title: "NIST CSF & CIS Controls Benchmark Review",
+        shortDescription:
+          "Benchmark operating systems, cloud tenancies, and network appliances against CIS Level 1/2 benchmarks and NIST SP 800-115 standards.",
+        icon: "ListChecks",
+      },
+    ],
+    whoItIsFor: {
+      heading: "Who It's For",
+      audiences: [
+        {
+          title: "Fintech, Banking & Payment Processors",
+          description:
+            "Companies handling digital payments, fund transfers, and card data requiring PCI-DSS, RBI, or SEBI compliant penetration test certifications.",
+        },
+        {
+          title: "Enterprise B2B SaaS Vendors",
+          description:
+            "SaaS platforms undergoing SOC 2 Type II or ISO 27001 certifications to unlock enterprise procurement and shorten sales security review cycles.",
+        },
+        {
+          title: "Healthcare Technology & MedTech Providers",
+          description:
+            "HealthTech providers storing, processing, or transmitting ePHI that must demonstrate strict adherence to HIPAA Security Rule requirements.",
+        },
+      ],
+    },
+    howWeWork: {
+      heading: "How We Work",
+      steps: [
+        {
+          number: 1,
+          title: "Regulatory Gap & Scope Alignment",
+          description:
+            "We review your target compliance framework, define in-scope assets (e.g. CDE or ePHI boundaries), and tailor testing criteria to auditor requirements.",
+        },
+        {
+          number: 2,
+          title: "Rigorous Technical Testing",
+          description:
+            "Our certified team conducts manual and automated penetration testing targeting all mandated technical control vectors and isolation mechanisms.",
+        },
+        {
+          number: 3,
+          title: "Audit-Grade Technical Reporting",
+          description:
+            "You receive an auditor-friendly report including methodology descriptions, CVSSv3.1 scores, control mapping matrices, and evidence documentation.",
+        },
+        {
+          number: 4,
+          title: "Remediation Guidance & Re-Testing",
+          description:
+            "We advise your engineering team through patching findings, followed by a complimentary validation retest to verify resolution.",
+        },
+        {
+          number: 5,
+          title: "Attestation & Certificate Issuance",
+          description:
+            "We provide a formal Attestation of Compliance (AoC) or VAPT Compliance Certificate ready for submission to your external auditors and customers.",
+        },
+      ],
+    },
+    cta: {
+      title: "Achieve Audit-Ready Security Compliance",
+      description:
+        "Speak with our compliance auditing specialists to ensure your applications and infrastructure pass their upcoming audit without friction.",
+      primaryButtonText: "Book Compliance Scoping",
+      primaryButtonHref: "/contact?service=compliance",
+      secondaryButtonText: "View All Compliance Services",
+      secondaryButtonHref: "/compliance",
+    },
+  },
+  {
     slug: "ai-security-products",
     title: "AI Security Product Development",
     tagline: "Production-grade artificial intelligence engineering for enterprise cybersecurity platforms.",
